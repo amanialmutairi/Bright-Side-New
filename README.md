@@ -16,7 +16,8 @@ A hospital booking management system which can be accessible by both reception e
 - [ ] As a receptionist I have a default login information with different dashboard than regular user.
 - [ ] As a receptionist I should be able to view, change & delete patient appointments requests.
 - [ ] As a receptionist I should be able to notify the patients about  their deleting request approval/rejection through email notification.
-- [ ] As a user/admin I can choose Drs through dropdown menu & pick a date using Calendar.
+- [ ] As a user/admin I can choose physicians through dropdown menu & pick a date using Calendar.
+- [ ] As a physician I have limited appointments per day (7 patient per day).
 - [ ] Database tables to store the appointments/admin & user login info.
 - [ ] Each appointment is issued with a bill.
 
