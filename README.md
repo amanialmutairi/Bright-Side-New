@@ -1,45 +1,33 @@
-[![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=426739&assignment_repo_type=GroupAssignmentRepo)
-# Developing Django on Repl.it
+# Hospital Booking System
 
-- Fork this template to get started
-- Simply hit run to start the server
-- The server will autoreload as needed. You don't need to restart the server manually.
+## Introduction 
 
-## Add your first view
+A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time & the doctor they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employees can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
 
-1. Create a file under `mysite` named `views.py` with the following contents:
+## Requirememts 
 
-```
-from django.http import HttpResponse
+- [ ] As a patient I can Login/SignUp.
+- [ ] As a receptionist I have a default login information with different dashboard than regular user.
+- [ ] As a receptionist I should be able to view, change & delete patient appointments requests.
+- [ ] As a patient I should be able to view, change & send delete request.
+- [ ] As a patient I should be able to change password, email, first & last name in my account profile.
+- [ ] As a user/admin I can choose Drs through dropdown menu & pick a date using Calendar.
+- [ ] Database tables to store the appointments/admin & user login info.
+- [ ] As a receptionist I should be able to notify the patients about  their deleting request approval/rejection through email notification.
+- [ ] As a patient I should be able to pay my bill using the system.
+- [ ] Each appointment is issued with a bill.
+- [ ] As a patient I can view the room number for my appointment.
 
+## ER Diagram 
+<img width="572" alt="Screen Shot 2021-04-23 at 2 08 51 AM" src="https://user-images.githubusercontent.com/81960104/115795594-dbc02c00-a3d8-11eb-9701-905663b410ba.png">
 
-def index(request):
-    return HttpResponse("Hello, world.")
-```
+## Team members:
+Amani Almutairi - 2152113593
 
-2. Add a url pattern under `mysite/urls.py`. It should look like this:
+Safaa Alshammari - 2162113843
 
-```
-from django.contrib import admin
-from django.urls import path
-from . import views
+Yousif Alfailakawi - 2162117711
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-]
-```
+## Team manager
+Amani Almutairi - 2152113593
 
-## Shell
-
-Django utilizes the shell for managing your site. For this click on the `?` in the lower-right corner and click "Workspace shortcuts" from there you can open a new shell pane. 
-
-## Database
-
-By default this template utilizes the sqlite database engine. While this is fine for development it won't work with external users of your app as we don't persist changes to files when they happen outside the development environment. 
-
-We suggest bringing a database using an outside service. 
-
-See Django documentation on how to setup a database: https://docs.djangoproject.com/en/3.0/intro/tutorial02/
-
-based on  amasad/django-template
