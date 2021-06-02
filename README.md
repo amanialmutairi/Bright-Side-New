@@ -7,16 +7,19 @@ A hospital booking management system which can be accessible by both reception e
 ## Requirememts 
 
 - [ ] As a patient I can Login/SignUp.
+- [ ] As a patient I should be able to view.
+- [ ] As a patient I should be able to change.
+- [ ] As a patient I should be able to send delete request.
+- [ ] As a patient I should be able to change password, email, first & last name in my account profile.
+- [ ] As a patient I should be able to pay my bill using the system.
+- [ ] As a patient I can view the room number for my appointment.
 - [ ] As a receptionist I have a default login information with different dashboard than regular user.
 - [ ] As a receptionist I should be able to view, change & delete patient appointments requests.
-- [ ] As a patient I should be able to view, change & send delete request.
-- [ ] As a patient I should be able to change password, email, first & last name in my account profile.
+- [ ] As a receptionist I should be able to notify the patients about  their deleting request approval/rejection through email notification.
 - [ ] As a user/admin I can choose Drs through dropdown menu & pick a date using Calendar.
 - [ ] Database tables to store the appointments/admin & user login info.
-- [ ] As a receptionist I should be able to notify the patients about  their deleting request approval/rejection through email notification.
-- [ ] As a patient I should be able to pay my bill using the system.
 - [ ] Each appointment is issued with a bill.
-- [ ] As a patient I can view the room number for my appointment.
+
 
 ## ER Diagram 
 <img width="572" alt="Screen Shot 2021-04-23 at 2 08 51 AM" src="https://user-images.githubusercontent.com/81960104/115795594-dbc02c00-a3d8-11eb-9701-905663b410ba.png">
