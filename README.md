@@ -6,7 +6,7 @@ A hospital booking management system which can be accessible by both reception e
 
 ## Requirememts 
 
-#####As a patient 
+##### As a patient 
 - [ ] I can Login/SignUp.
 - [ ] I should be able to view.
 - [ ] I should be able to change.
@@ -14,7 +14,7 @@ A hospital booking management system which can be accessible by both reception e
 - [ ] I should be able to change password, email, first & last name in my account profile.
 - [ ] I should be able to pay my bill using the system.
 - [ ] I can view the room number for my appointment.
-#####As a receptionist
+##### As a receptionist
 - [ ] I have a default login information with different dashboard than regular user.
 - [ ] I should be able to view, change & delete patient appointments requests.
 - [ ] I should be able to notify the patients about  their deleting request approval/rejection through email notification.
