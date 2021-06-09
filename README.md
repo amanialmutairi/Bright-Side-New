@@ -29,7 +29,8 @@ A hospital booking management system which can be accessible by both reception e
 
 
 ## ER Diagram 
-![DBMS ER diagram (UML notation)](https://user-images.githubusercontent.com/75279870/121149825-aae26c00-c84b-11eb-9dce-f31b04ab3151.png)
+![DBMS ER diagram (UML notation)](https://user-images.githubusercontent.com/75279870/121386486-b66c8a80-c952-11eb-8c70-58fc91e6d8d7.png)
+
 
 
 
