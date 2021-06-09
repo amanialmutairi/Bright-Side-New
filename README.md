@@ -3,7 +3,7 @@
 
 ## Introduction 
 
-A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time & the doctor they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employees can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
+A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, serive & the physician they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employee can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
 
 ## Requirememts 
 
