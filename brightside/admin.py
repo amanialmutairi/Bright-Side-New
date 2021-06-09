@@ -6,7 +6,7 @@ from .models import patient, reseptionist, service
 #@admin.register(patient)
 @admin.register(patient)
 class PatientAdmin(admin.ModelAdmin):
-    list_display = ['p_username', 'p_fname', 'p_lname', 'p_email', 'p_password']
+    list_display = ['p_username', 'p_first_name', 'p_last_name', 'p_email', 'p_password']
 
 
 @admin.register(reseptionist)
