@@ -8,7 +8,7 @@ A hospital booking management system which can be accessible by both reception e
 
 ##### As a patient 
 - [ ] I can Login/SignUp.
-- [ ] I should be able to view my appointments details (physician, date, time, room number & bill).
+- [ ] I should be able to view my appointments details (physician, date, time, service & bill).
 - [ ] I should be able to change my appointments.
 - [ ] I should be able to send delete request for appointments.
 - [ ] I should be able to change password, email, first & last name in my account profile.
