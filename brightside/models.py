@@ -36,7 +36,23 @@ class patient(models.Model):
 
 
 #class bill(models.Model):
-
+class Bill(models.Model):
+  bill_id = models.CharField(max_length=15, unique=True)
+  bill_date = models.DateTimeField(null=True)
 #class payment(models.Model):
-
+class Payment(models.Model):
+  receipt_id = models.CharField(max_length=15, unique=True)
+  payment_method = (
+        (0, "VISA"),
+        (1, "Master Card"),
+        (2, "Cash"),
+        (3, "Knet")
+    )
+  total_pay = models.CharField(max_length=15)
+  payment_date = models.DateTimeField(null=True)
 #class appointment(models.Model):
+class Appointment(models.Model):
+  appointment_id = models.CharField(max_length=15, unique=True)
+  appointment_date = models.DateField(null=True)
+  appointment_time = models.TimeField(null=True)
+  
