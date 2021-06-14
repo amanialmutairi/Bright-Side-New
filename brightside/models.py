@@ -17,6 +17,9 @@ class Physician(models.Model):
   ph_last_name =  models.CharField(max_length=50)
   ph_speciality =  models.CharField(max_length=30)
 
+  def __str__(self):
+    return f" First Name: {self.ph_first_name} - Last Name: {self.ph_last_name} - Speciality: {self.ph_speciality}"
+
 class Ph_service(models.Model):
   physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
   service = models.ForeignKey('Service', on_delete=models.CASCADE)
@@ -46,8 +49,13 @@ class Patient(models.Model):
 
 #class bill(models.Model):
 class Bill(models.Model):
+  STATUS = (
+        (0, "Paid"),
+        (1, "Unpaid"),
+    )
   bill_id = models.CharField(max_length=15, unique=True)
   bill_date = models.DateTimeField(null=True)
+  bill_status = models.IntegerField(choices=STATUS, default=1)
 
 #class payment(models.Model):
 class Payment(models.Model):
