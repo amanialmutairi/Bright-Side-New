@@ -57,6 +57,7 @@ class Bill(models.Model):
   bill_date = models.DateTimeField(null=True)
   bill_status = models.IntegerField(choices=STATUS, default=1)
 
+
 #class payment(models.Model):
 class Payment(models.Model):
   payment_method = (

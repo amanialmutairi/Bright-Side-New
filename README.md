@@ -1,14 +1,15 @@
+[![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=426739&assignment_repo_type=GroupAssignmentRepo)
 # Hospital Booking System
 
 ## Introduction 
 
-A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time & the doctor they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employees can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
+A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, serive & the physician they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employee can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
 
 ## Requirememts 
 
 ##### As a patient 
 - [ ] I can Login/SignUp.
-- [ ] I should be able to view my appointments details (physician, date, time, room number & bill).
+- [ ] I should be able to view my appointments details (physician, date, time, service & bill).
 - [ ] I should be able to change my appointments.
 - [ ] I should be able to send delete request for appointments.
 - [ ] I should be able to change password, email, first & last name in my account profile.
@@ -29,7 +30,11 @@ A hospital booking management system which can be accessible by both reception e
 
 
 ## ER Diagram 
-<img width="572" alt="Screen Shot 2021-04-23 at 2 08 51 AM" src="https://user-images.githubusercontent.com/81960104/115795594-dbc02c00-a3d8-11eb-9701-905663b410ba.png">
+![DBMS ER diagram (UML notation)](https://user-images.githubusercontent.com/75279870/121392429-0f8aed00-c958-11eb-9dbf-742b603ca5fe.png)
+
+
+
+
 
 ## Team members:
 Amani Almutairi - 2152113593
