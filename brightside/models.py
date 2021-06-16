@@ -83,7 +83,7 @@ class Payment(models.Model):
   total_pay = models.CharField(max_length=15)
   payment_date = models.DateTimeField(null=True)
   status = models.IntegerField(choices=STATUS, default=1)
-  payment_method = models.IntegerField(choices=STATUS, default=0)
+  payment_method = models.IntegerField(choices=payment_method, default=0)
   patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
   
 
@@ -93,6 +93,6 @@ class Appointment(models.Model):
   appointment_date = models.DateField(null=True)
   appointment_time = models.TimeField(null=True)
   patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
-  reseptionist = models.ForeignKey('Reseptionist', on_delete=models.CASCADE)
+  reseptionist = models.ForeignKey('Reseptionist', on_delete=models.SET_NULL, blank=True, null=True)
   service = models.ForeignKey('Service', on_delete=models.CASCADE)
   physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
