@@ -5,17 +5,24 @@
 <head>
 <style>
 .mydiv {
-  display: center;
-    clear: left;
-    width: 50px;
-    text-align: justify-content-center;
+  display: inline-block;
+    margin-left: 20px;
+     
     
 }
 input {
-  display: center;
-  float: left;
-  text-align: left;
+  padding: 10px;
+    border: 1px solid #E5E5E5;
+    width: 200px;
+      
+   float:right;
   
+}
+label {
+    display: inline-block;
+    margin-left: 10px;
+    color: #999999;
+    min-width: 110px;
 }
 </style>
     <meta charset="utf-8">
@@ -60,25 +67,25 @@ input {
 							<div class="input-group-append">
 								
 							</div>
-							Username: {{form.username}}
+					<label for="username">Username:</label>  {{form.username}}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								
 							</div>
-							Email: {{form.email}}
+					<label for="email">Email:</label>  {{form.email}}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 							
 							</div align:center>
-							Password: {{form.password1}}
+					<label for="password1">Password:</label>  {{form.password1}}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								
 							</div>
-							Re-Type Password: {{form.password2}}
+					<label for="password2">Re-Enter:</label>  {{form.password2}}
 						</div>
 </div>
 
@@ -112,7 +119,20 @@ input {
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+<script>
+	
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+		form_fields[4].placeholder='Re-enter Password...';
 
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+	</script>
 </body>
 
 </html>
