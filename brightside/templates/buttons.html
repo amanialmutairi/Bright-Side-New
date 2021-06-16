@@ -29,147 +29,94 @@
         <!-- Page Wrapper -->
         <div id="wrapper">
     
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">BrightSide <sup>:)</sup></div>
-                </a>
-    
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-    
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-    
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-    
-    
-    
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Calendar</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Appointments</h6>
-                            <a class="collapse-item" href="buttons.html">Booking</a>
-                            <a class="collapse-item" href="cards.html">View Calendar</a>
-                        </div>
-                    </div>
-                </li>
-    
-    
-    
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-    
-    
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-    
-                    <a class="nav-link" href="charts.html">
-    
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Requests</span></a>
-    
-    
-                    <!-- Divider -->
-                    <hr class="sidebar-divider d-none d-md-block">
-    
-    
-    
-            </ul>
-            <!-- End of Sidebar -->
-    
+<!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    
+                </div>
+                <div class="sidebar-brand-text mx-3">BrightSide <sup>:)</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">
+                    
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                
+                <a class="nav-link" href="{% url 'booking' %}">
+                    
+                    
+                    <span>Booking</span></a>
+
+                    
+<a class="nav-link" href="{% url 'calendar' %}">
+                    
+                    
+                    <span>View Calendar</span></a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <a class="nav-link" href="{% url 'requests' %}">
+                    
+                    
+                    <span>Requests</span></a>
+
+        </ul>
+        <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
     
                 <!-- Main Content -->
                 <div id="content">
     
-                    <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar -->
+                                  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     
                         <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
+                            
                         </button>
     
     
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
-    
-                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                            <li class="nav-item dropdown no-arrow d-sm-none">
-                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </a>
-                                <!-- Dropdown - Messages -->
-                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                    aria-labelledby="searchDropdown">
-                                    <form class="form-inline mr-auto w-100 navbar-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small"
-                                                placeholder="Search for..." aria-label="Search"
-                                                aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
-                                                    <i class="fas fa-search fa-sm"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-    
-    
-    
-    
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                    aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Settings
-                                    </a>
-    
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                </div>
-                            </li>
+                        <li class="btn">
+                <a class="nav-link" href="{% url 'logout'%}">
+                    
+                    <span>Logout</span></a>
+            </li>
+            <li class="btn">
+                <a class="nav-link" href="{% url 'profile'%}">
+                    
+                    <span>Profile</span></a>
+            </li>
+            
+                        
+
+
+
+
     
                         </ul>
     
                     </nav>
-                    <!-- End of Topbar -->
+                <!-- End of Topbar -->
 
 
                 <!-- Begin Page Content -->
@@ -195,57 +142,57 @@
                                         <code>.btn-circle</code>
                                     </div>
                                     <a href="#" class="btn btn-primary btn-circle">
-                                        <i class="fab fa-facebook-f"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-success btn-circle">
-                                        <i class="fas fa-check"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fas fa-info-circle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-warning btn-circle">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
+                                        
                                     </a>
                                     <!-- Circle Buttons (Small) -->
                                     <div class="mt-4 mb-2">
                                         <code>.btn-circle .btn-sm</code>
                                     </div>
                                     <a href="#" class="btn btn-primary btn-circle btn-sm">
-                                        <i class="fab fa-facebook-f"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-check"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-info btn-circle btn-sm">
-                                        <i class="fas fa-info-circle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
+                                        
                                     </a>
                                     <!-- Circle Buttons (Large) -->
                                     <div class="mt-4 mb-2">
                                         <code>.btn-circle .btn-lg</code>
                                     </div>
                                     <a href="#" class="btn btn-primary btn-circle btn-lg">
-                                        <i class="fab fa-facebook-f"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-success btn-circle btn-lg">
-                                        <i class="fas fa-check"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-info btn-circle btn-lg">
-                                        <i class="fas fa-info-circle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-warning btn-circle btn-lg">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                        
                                     </a>
                                     <a href="#" class="btn btn-danger btn-circle btn-lg">
-                                        <i class="fas fa-trash"></i>
+                                        
                                     </a>
                                 </div>
                             </div>
@@ -262,10 +209,9 @@
                                         <code>_variables.scss</code> file and then using the Bootstrap button variant
                                         mixin to create a new style, as demonstrated in the <code>_buttons.scss</code>
                                         file.</p>
-                                    <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>
+                                    <a href="#" class="btn btn-google btn-block">
                                         .btn-google</a>
-                                    <a href="#" class="btn btn-facebook btn-block"><i
-                                            class="fab fa-facebook-f fa-fw"></i> .btn-facebook</a>
+                                    <a href="#" class="btn btn-facebook btn-block">.btn-facebook</a>
 
                                 </div>
                             </div>
@@ -285,49 +231,49 @@
                                         but it is not required.</p>
                                     <a href="#" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-flag"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Primary</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-check"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Success</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-info-circle"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Info</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-exclamation-triangle"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Warning</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Danger</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-secondary btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Secondary</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-light btn-icon-split">
                                         <span class="icon text-gray-600">
-                                            <i class="fas fa-arrow-right"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Light</span>
                                     </a>
@@ -335,14 +281,14 @@
                                     <p>Also works with small and large button classes!</p>
                                     <a href="#" class="btn btn-primary btn-icon-split btn-sm">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-flag"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Small</span>
                                     </a>
                                     <div class="my-2"></div>
                                     <a href="#" class="btn btn-primary btn-icon-split btn-lg">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-flag"></i>
+                                            
                                         </span>
                                         <span class="text">Split Button Large</span>
                                     </a>
@@ -377,7 +323,7 @@
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+        
     </a>
 
     <!-- Logout Modal-->
