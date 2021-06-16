@@ -3,19 +3,22 @@ from . import views
 
 
 urlpatterns = [
-  path('index', views.index, name='index'),
-  path('user/profile', views.user_profile),
-  path('register/', views.register_page, name="register"),
+  path('index', views.indextest, name='indextest'),
+  path('index/', views.index, name='index'),
+
+  path('user/profile', views.user_profile, name='profile'),
+  path('register/', views.register_page, name='register'),
 	path('login/', views.login_page, name="login"),  
 	path('logout/', views.logout_user, name="logout"),
   path('request/', views.request_view, name='requests'),
   path('booking/', views.booking, name='booking'),
   path('calendar/', views.calendar, name='calendar'),
-  path('profile/', views.user_profile, name='profile')
+  path('forgot_password/', views.forgot_password, name='forgot_pass'),
+  path('user/', views.user_page, name="user-page"),
 
 
   #path('', views.index, name="index"),
-  #path('user/', views.user_page, name="user-page"),
+  
   #path('appointments/', views.appointment, name='appointments'),
   #path('patient/<str:pk_test>/', views.patient, name="patient"),
 

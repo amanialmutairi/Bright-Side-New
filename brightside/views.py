@@ -10,12 +10,16 @@ from django.contrib.auth.models import Group
 
 from .forms import ReseptionistForm, CreateUserForm
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
-def index(request):
+def indextest(request):
   return render(request, 'index.html')
 
 #users
+def forgot_password(request):
+  return render(request, 'forgot-password.html')
+
+  
 def user_profile(request):
   return render(request, 'user.html')
 
@@ -29,7 +33,7 @@ def register_page(request):
 			user = form.save()
 			username = form.cleaned_data.get('username')
 
-			group = Group.objects.get(name='patient')
+			group = Group.objects.get(name='user')
 			user.groups.add(group)
 
 			messages.success(request, 'Account was created for ' + username)
@@ -62,22 +66,22 @@ def logout_user(request):
 	logout(request)
 	return redirect('login')
 
-#@login_required(login_url='login')
-#@allowed_users(allowed_roles=['admin'])
-#def index(request):
-#	appointment = Appointment.objects.all()
-#	patient = Patient.objects.all()
-#	total_patient = Patient.count()
-#	total_appointment = Appointment.count()
-	#pending = Appointment.filter(status='Pending').count()
+@login_required(login_url='login')
+@admin_only
+def index(request):
+	appointment = Appointment.objects.all()
+	patient = Patient.objects.all()
+	#total_appointment = Appointment.count()
+	
 
-#	context = {'appointment':appointment, 'patient':patient,
-#	'total_patient':total_patient,
-#	'total_appointment':total_appointment  }
+	context = {'appointment':appointment, 'patient':patient}
+	#'total_appointment':total_appointment  
 
+	return render(request, 'index.html', context)
 
-
-#	return render(request, 'index.html', context)
+def user_page(request):
+	context = {}
+	return render(request, 'userview.html', context)
 
 #requests
 def request_view(request):
