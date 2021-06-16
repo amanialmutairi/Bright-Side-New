@@ -11,6 +11,7 @@ urlpatterns = [
   path('request/', views.request_view, name='requests'),
   path('booking/', views.booking, name='booking'),
   path('calendar/', views.calendar, name='calendar'),
+  path('profile/', views.user_profile, name='profile')
 
 
   #path('', views.index, name="index"),

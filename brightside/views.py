@@ -17,8 +17,7 @@ def index(request):
 
 #users
 def user_profile(request):
-  data = {}
-  return render(request, 'user.html', context=data)
+  return render(request, 'user.html')
 
 @unauthenticated_user
 def register_page(request):
