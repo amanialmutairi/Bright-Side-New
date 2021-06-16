@@ -12,10 +12,19 @@ class Reseptionist(models.Model):
 
 #class physician(models.Model):
 class Physician(models.Model):
+  Speciality = (
+        (0, "General Dentist"),
+        (1, "Periodontist"),
+        (2, "Oral and Maxillofacial Surgeon"),
+        (3, "Nurse"),
+
+
+
+    )
   ph_id = models.CharField(max_length=15, unique=True)
   ph_first_name = models.CharField(max_length=50)
   ph_last_name =  models.CharField(max_length=50)
-  ph_speciality =  models.CharField(max_length=30)
+  ph_speciality =  models.IntegerField(choices=Speciality, default=0)
 
   def __str__(self):
     return f" First Name: {self.ph_first_name} - Last Name: {self.ph_last_name} - Speciality: {self.ph_speciality}"
