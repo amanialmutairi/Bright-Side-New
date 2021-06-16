@@ -93,7 +93,13 @@ def calendar(request):
   return render(request, 'cards.html')
 #booking
 def booking(request):
-  return render(request, 'buttons.html')
+  #if request.POST:
+    #form = CreateAppointment(request.POST)
+    #if form.is_valid():
+     # form.save()
+  #context = {'form':form}  
+  return render(request, 'buttons.html' )
+
 #appointment
 
 #reseptionist
