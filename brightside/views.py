@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from us.forms import Signup
+from .forms import signup
 from django.contrib.auth import authenticate,logout,login
 
-def SignUp(request):
-    data=Signup(request.POST or None)
+def signup(request):
+    data=signup(request.POST or None)
     if data.is_valid():
        data.save()
        return redirect("signin")
@@ -18,7 +18,7 @@ def Home(request):
   return render(request,"home.html")
 
 
-def Signin(request):
+def signin(request):
     if request.method== 'POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
