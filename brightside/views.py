@@ -1,18 +1,30 @@
-from django.shortcuts import render
-from .models import patient, reseptionist, service
-# Create your views here.
+from django.shortcuts import render,redirect
+from us.forms import Signup
+from django.contrib.auth import authenticate,logout,login
 
-#reseptionist
+def SignUp(request):
+    data=Signup(request.POST or None)
+    if data.is_valid():
+       data.save()
+       return redirect("signin")
+    
+    context1={
+        'info':data,}
+    return render(request,'signup.html',context1)
 
-#appointment
 
-#room
+def Home(request):
+
+  return render(request,"home.html")
 
 
-#patient
+def Signin(request):
+    if request.method== 'POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user=authenticate(request, username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect("home")
 
-#Doctor
-
-#bill
-
-#payment
+    return render(request,'signin.html')
