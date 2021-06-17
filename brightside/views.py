@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
 
-from .forms import ReseptionistForm, CreateUserForm
+from .forms import ReseptionistForm, CreateUserForm, CreateAppointment
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
@@ -32,7 +32,6 @@ def register_page(request):
 		if form.is_valid():
 			user = form.save()
 			username = form.cleaned_data.get('username')
-
 			group = Group.objects.get(name='customer')
 			user.groups.add(group)
 
@@ -93,12 +92,13 @@ def calendar(request):
   return render(request, 'cards.html')
 #booking
 def booking(request):
-  #if request.POST:
-    #form = CreateAppointment(request.POST)
-    #if form.is_valid():
-     # form.save()
-  #context = {'form':form}  
-  return render(request, 'buttons.html' )
+  data = {}
+  f = CreateAppointment(request.POST or None)
+  data["form"] = f
+  if f.is_valid():
+    f.save()
+    return redirect("booking") 
+  return render(request, 'buttons.html', context=data )
 
 #appointment
 
