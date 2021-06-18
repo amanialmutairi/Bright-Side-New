@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import Appointment, Physician, Reseptionist, Service, Patient, Bill, Payment
 
-class CreateAppointment(ModelForm):
+class CreateAppointmentAdmin(ModelForm):
   class Meta:
      model = Appointment
      fields = '__all__'
@@ -15,6 +15,16 @@ class CreateAppointment(ModelForm):
 
     }
 
+class CreateAppointmentUser(ModelForm):
+  class Meta:
+     model = Appointment
+     fields = '__all__'
+     widgets = {
+      'reseptionist' : forms.HiddenInput(), 
+      'appointment_date': DatePickerInput(),
+      'appointment_time': TimePickerInput(),
+
+    }
 class ReseptionistForm(ModelForm):
 	class Meta:
 		model = Reseptionist
