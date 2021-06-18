@@ -18,8 +18,6 @@ class Physician(models.Model):
         (2, "Oral and Maxillofacial Surgeon"),
         (3, "Nurse"),
 
-
-
     )
   ph_id = models.CharField(max_length=15, unique=True)
   ph_first_name = models.CharField(max_length=50)
