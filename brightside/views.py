@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
+from .models import Physician
 
 
 from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
@@ -76,8 +77,9 @@ def index(request):
 	return render(request, 'index.html', context)
 
 def user_page(request):
-	context = {}
-	return render(request, 'user_home.html', context)
+  docs = Physician.objects.all()
+  context = {'docs':docs}
+  return render(request,'user_home.html', context)
 
 #requests
 def request_view(request):
