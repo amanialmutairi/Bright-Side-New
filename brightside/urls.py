@@ -1,8 +1,9 @@
 from django.urls import path
-from . import views
+from .views import index
 
 
 urlpatterns = [
+<<<<<<< HEAD
   path('index/', views.index, name='index'),
   path('user/profile', views.user_profile, name='profile'),
   path('register/', views.register_page, name='register'),
@@ -14,4 +15,7 @@ urlpatterns = [
   path('forgot_password/', views.forgot_password, name='forgot_pass'),
   path('user/', views.user_page, name="user-page"),
 
+=======
+    path('home/', index)
+>>>>>>> safaa_html/css
 ]
