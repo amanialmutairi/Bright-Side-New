@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
@@ -110,10 +109,7 @@ def booking(request):
 #bill
 
 #payment
-=======
-from django.shortcuts import render
-from .models import patient, reseptionist, service
 
-def index(request):
-  return render(request, "brightside/index.html")
->>>>>>> safaa_html/css
+def home(request):
+  return render(request, "home.html")
+
