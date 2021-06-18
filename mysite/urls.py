@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from brightside.views import Home,signup,signin
+from brightside.views import Home,SignUp,SignIn
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('home/', Home,name="home"),  
-    path('signup/',signup,name="signup"), 
-    path('signin/',signin,name="signin"), 
+    path('signup/',SignUp,name="signup"), 
+    path('signin/',SignIn,name="signin"), 
 ]
 
 
