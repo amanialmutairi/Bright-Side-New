@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
 
-from .forms import ReseptionistForm, CreateUserForm, CreateAppointment
+from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
@@ -86,18 +86,26 @@ def request_view(request):
 #view_calendar
 def calendar(request):
   return render(request, 'calendar.html')
-#booking
-def booking(request):
+#Admin Booking
+def booking_admin(request):
   data = {}
-  f = CreateAppointment(request.POST or None)
+  f = CreateAppointmentAdmin(request.POST or None)
   data["form"] = f
   if f.is_valid():
     f.save()
-    return redirect("booking") 
+    return redirect("admin-booking") 
   return render(request, 'booking.html', context=data )
 
-#appointment
-
+#User booking_admin
+def booking_user(request):
+  data = {}
+  f = CreateAppointmentUser(request.POST or None)
+  data["form"] = f
+  if f.is_valid():
+    f.save()
+    return redirect("home") 
+  return render(request, 'user_home.html', context=data )
+    
 #reseptionist
 
 
