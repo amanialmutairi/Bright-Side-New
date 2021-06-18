@@ -8,12 +8,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
 
-from .forms import ReseptionistForm, CreateUserForm
+from .forms import ReseptionistForm, CreateUserForm, CreateAppointment
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
-def indextest(request):
-  return render(request, 'index.html')
+
 
 #users
 def forgot_password(request):
@@ -32,14 +31,12 @@ def register_page(request):
 		if form.is_valid():
 			user = form.save()
 			username = form.cleaned_data.get('username')
-
-			group = Group.objects.get(name='customer')
+			group = Group.objects.get(name='user')
 			user.groups.add(group)
 
 			messages.success(request, 'Account was created for ' + username)
 
 			return redirect('login')
-		
 		
 
 	context = {'form':form}
@@ -74,10 +71,8 @@ def index(request):
 	patient = Patient.objects.all()
 	#total_appointment = Appointment.count()
 	
-
 	context = {'appointment':appointment, 'patient':patient}
 	#'total_appointment':total_appointment  
-
 	return render(request, 'index.html', context)
 
 def user_page(request):
@@ -86,14 +81,21 @@ def user_page(request):
 
 #requests
 def request_view(request):
-  return render(request, 'charts.html')
+  return render(request, 'requests.html')
 
 #view_calendar
 def calendar(request):
-  return render(request, 'cards.html')
+  return render(request, 'calendar.html')
 #booking
 def booking(request):
-  return render(request, 'buttons.html')
+  data = {}
+  f = CreateAppointment(request.POST or None)
+  data["form"] = f
+  if f.is_valid():
+    f.save()
+    return redirect("booking") 
+  return render(request, 'booking.html', context=data )
+
 #appointment
 
 #reseptionist
