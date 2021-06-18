@@ -77,7 +77,7 @@ def index(request):
 
 def user_page(request):
 	context = {}
-	return render(request, 'userview.html', context)
+	return render(request, 'user_home.html', context)
 
 #requests
 def request_view(request):
@@ -110,6 +110,5 @@ def booking(request):
 
 #payment
 
-def home(request):
-  return render(request, "home.html")
+
 
