@@ -10,7 +10,6 @@ class CreateAppointment(ModelForm):
      model = Appointment
      fields = '__all__'
      widgets = {
-      #'appointment_id': forms.HiddenInput(),
       'appointment_date': DatePickerInput(),
       'appointment_time': TimePickerInput(),
 
