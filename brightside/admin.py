@@ -11,7 +11,7 @@ class PhysicianAdmin(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ['appointment_id', 'appointment_date', 'appointment_time']
+    list_display = [ 'appointment_date', 'appointment_time']
 
 
 @admin.register(Payment)

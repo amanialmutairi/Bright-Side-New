@@ -89,7 +89,6 @@ class Payment(models.Model):
 
 #class appointment(models.Model):
 class Appointment(models.Model):
-  appointment_id = models.CharField(max_length=15, unique=True)
   appointment_date = models.DateField(null=True)
   appointment_time = models.TimeField(null=True)
   patient = models.ForeignKey('Patient', on_delete=models.CASCADE)

@@ -46,3 +46,7 @@ Yousif Alfailakawi - 2162117711
 ## Team manager
 Amani Almutairi - 2152113593
 
+## Bonuses:
+-  Created permission roles.
+-  Added signin/signup form.
+ 
