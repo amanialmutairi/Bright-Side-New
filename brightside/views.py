@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
@@ -119,4 +120,27 @@ def booking_user(request):
 #payment
 
 
+
+def sign_up(request):
+    data = CreateUserForm(request.POST or None)
+    if data.is_valid():
+       data.save()
+       return redirect("signin")
+    
+    context={
+        'info':data,}
+    return render(request,'signup.html',context)
+
+
+
+def sign_in(request):
+    if request.method== 'POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user=authenticate(request, username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect("home")
+
+    return render(request,'signin.html')
 
