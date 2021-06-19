@@ -33,7 +33,7 @@ def user_profile(request, profile_id):
         form = f.save(commit=True)
         form.int = (form.p_username)
         form.save()
-        return redirect('profile', id=profile_id)
+        return redirect('profile', profile_id=profile_id)
     return render(request, 'profile.html', context=data)
 
 
