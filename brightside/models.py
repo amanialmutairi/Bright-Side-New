@@ -18,8 +18,6 @@ class Physician(models.Model):
         (2, "Oral and Maxillofacial Surgeon"),
         (3, "Nurse"),
 
-
-
     )
   ph_id = models.CharField(max_length=15, unique=True)
   ph_first_name = models.CharField(max_length=50)
@@ -44,12 +42,12 @@ class Service(models.Model):
 
 #class patient(models.Model):
 class Patient(models.Model):
-    p_username = models.CharField(max_length=50, unique=True, primary_key=True)
+    p_username = models.CharField(max_length=50, unique=True)
     p_first_name = models.CharField(max_length=50)
     p_last_name =  models.CharField(max_length=50)
     p_email = models.EmailField(max_length= 100, unique=True)
     p_password = models.CharField(max_length=100)
-    
+    id = models.AutoField(primary_key=True)
 
     def __str__(self):
         return self.p_first_name

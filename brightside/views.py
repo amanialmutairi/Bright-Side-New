@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
 
-from .forms import ReseptionistForm, CreateUserForm
+from .forms import ReseptionistForm, CreateUserForm, PatientForm
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
@@ -20,8 +20,19 @@ def forgot_password(request):
   return render(request, 'forgot-password.html')
 
   
-def user_profile(request):
-  return render(request, 'user.html')
+def user_profile(request, profile_id):
+  profile = get_object_or_404(Patient, id=profile_id)
+  f = PatientForm(request.POST or None, instance= profile)
+  data ={}
+  data['user_profile'] = Patient.objects.get(id=profile_id)
+  data['user_form'] = f
+
+  if f.is_valid():
+    form = f.save(commit=True)
+    form.int = (form.p_username)
+    form.save()
+    return redirect('profile', id=profile_id)
+  return render(request, 'user.html', context=data)
 
 @unauthenticated_user
 def register_page(request):
