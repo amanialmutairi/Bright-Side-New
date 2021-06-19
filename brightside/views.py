@@ -84,10 +84,10 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def user_page(request):
-    docs = Physician.objects.all()
-    context = {'docs': docs}
-    return render(request, 'user_home.html', context)
+#def user_page(request):
+ #   docs = Physician.objects.all()
+  #  context = {'docs': docs}
+   # return render(request, 'user_home.html', context)
 
 # requests
 
@@ -124,13 +124,15 @@ def booking_user(request):
         return redirect("home")
     return render(request, 'user_home.html', context=data)
 
-# reseptionist
+def count_appointment(request):
+  data= {}
+  return render(request, 'index.html', context=data)
+def count_patient(request):
+  patient = Patient.objects.count()
+  data= {}
+  data['patient'] = patient
+  return render(request, 'index.html', context=data)
 
-
-# service
-
-# Doctor
-
-# bill
-
-# payment
+def total_earning(request):
+  data= {}
+  return render(request, 'index.html', context=data)
