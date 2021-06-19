@@ -24,11 +24,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patient',
             fields=[
-                ('p_username', models.CharField(max_length=50, primary_key=True, serialize=False, unique=True)),
+                ('p_username', models.CharField(max_length=50, unique=True)),
                 ('p_first_name', models.CharField(max_length=50)),
                 ('p_last_name', models.CharField(max_length=50)),
                 ('p_email', models.EmailField(max_length=100, unique=True)),
                 ('p_password', models.CharField(max_length=100)),
+                ('id', models.AutoField(primary_key=True, serialize=False)),
             ],
         ),
         migrations.CreateModel(

@@ -99,11 +99,14 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Logout</span></a>
             </li>
+            
             <li class="btn">
-                <a class="nav-link" href="{% url 'profile'%}">
+              
+                <a class="nav-link" href="{% url 'profile' user_profile.id %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Profile</span></a>
             </li>
+            
             
                         
 
@@ -175,6 +178,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+<form action="" method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+<input type="submit" value="Update user profile">
+</form>
 
 </body>
 
