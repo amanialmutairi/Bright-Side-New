@@ -35,15 +35,15 @@ def user_profile(request, profile_id):
     return redirect('profile', id=profile_id)
   return render(request, 'user.html', context=data)
 
-@unauthenticated_user
-def register_page(request):
+@unauthenticated_user   
+def sign_up(request):
 
-	form = CreateUserForm()
+	data = CreateUserForm()
 	if request.method == 'POST':
-		form = CreateUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			username = form.cleaned_data.get('username')
+		data = CreateUserForm(request.POST or None)
+		if data.is_valid():
+			user = data.save()
+			username = data.cleaned_data.get('username')
 			group = Group.objects.get(name='user')
 			user.groups.add(group)
 
@@ -52,8 +52,8 @@ def register_page(request):
 			return redirect('login')
 		
 
-	context = {'form':form}
-	return render(request, 'register.html', context)
+	context = {'info':data,}
+	return render(request, 'signup.html', context)
 
 @unauthenticated_user
 def login_page(request):
@@ -71,7 +71,7 @@ def login_page(request):
 			messages.info(request, 'Username OR password is incorrect')
 
 	context = {}
-	return render(request, 'login.html', context)
+	return render(request, 'signin.html', context)
 
 def logout_user(request):
 	logout(request)
@@ -133,26 +133,9 @@ def booking_user(request):
 
 
 
-def sign_up(request):
-    data = CreateUserForm(request.POST or None)
-    if data.is_valid():
-       data.save()
-       return redirect("signin")
-    
-    context={
-        'info':data,}
-    return render(request,'signup.html',context)
 
 
 
-def sign_in(request):
-    if request.method== 'POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        user=authenticate(request, username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect("home")
 
-    return render(request,'signin.html')
+
 
