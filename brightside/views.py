@@ -38,23 +38,15 @@ def user_profile(request, profile_id):
 
 
 
-def register(request):
+#def register(request):
+ # data = CreateUserForm(request.POST or None)
+  #if data.is_valid():
+   #    data.save()
 
-    data = CreateUserForm()
-    if request.method == 'POST':
-        data = CreateUserForm(request.POST or None)
-        if data.is_valid():
-            user = data.save()
-            username = data.cleaned_data.get('username')
-            group = Group.objects.get(name='user')
-            user.groups.add(group)
+ # return redirect('login')
 
-            messages.success(request, 'Account was created for ' + username)
-
-            return redirect('login')
-
-    context = {'info': data, }
-    return render(request, 'register.html', context)
+  #context = {'info': data, }
+  #return render(request, 'register.html', context)
 
 
 
