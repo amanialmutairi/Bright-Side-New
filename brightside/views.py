@@ -13,7 +13,7 @@ from .models import Physician
 from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
 from .forms import ReseptionistForm, CreateUserForm, PatientForm
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
-from .decorators import unauthenticated_user, allowed_users, admin_only
+
 # Create your views here.
 
 
@@ -37,27 +37,19 @@ def user_profile(request, profile_id):
     return render(request, 'profile.html', context=data)
 
 
-@unauthenticated_user
-def register(request):
 
-    data = CreateUserForm()
-    if request.method == 'POST':
-        data = CreateUserForm(request.POST or None)
-        if data.is_valid():
-            user = data.save()
-            username = data.cleaned_data.get('username')
-            group = Group.objects.get(name='user')
-            user.groups.add(group)
+#def register(request):
+ # data = CreateUserForm(request.POST or None)
+  #if data.is_valid():
+   #    data.save()
 
-            messages.success(request, 'Account was created for ' + username)
+ # return redirect('login')
 
-            return redirect('login')
-
-    context = {'info': data, }
-    return render(request, 'register.html', context)
+  #context = {'info': data, }
+  #return render(request, 'register.html', context)
 
 
-@unauthenticated_user
+
 def login_page(request):
 
     if request.method == 'POST':
@@ -81,8 +73,7 @@ def logout_user(request):
     return redirect('login')
 
 
-@login_required(login_url='login')
-@admin_only
+
 def index(request):
     appointment = Appointment.objects.all()
     patient = Patient.objects.all()
