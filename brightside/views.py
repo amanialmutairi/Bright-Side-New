@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect 
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
@@ -10,6 +11,7 @@ from .models import Physician
 
 
 from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
+from .forms import ReseptionistForm, CreateUserForm, PatientForm
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
@@ -20,18 +22,31 @@ def forgot_password(request):
   return render(request, 'forgot-password.html')
 
   
-def user_profile(request):
-  return render(request, 'user.html')
 
-@unauthenticated_user
-def register_page(request):
+def user_profile(request, profile_id):
+  profile = get_object_or_404(Patient, id=profile_id)
+  f = PatientForm(request.POST or None, instance= profile)
+  data ={}
+  data['user_profile'] = Patient.objects.get(id=profile_id)
+  data['user_form'] = f
 
-	form = CreateUserForm()
+  if f.is_valid():
+    form = f.save(commit=True)
+    form.int = (form.p_username)
+    form.save()
+    return redirect('profile', id=profile_id)
+  return render(request, 'profile.html', context=data)
+
+
+@unauthenticated_user   
+def register(request):
+
+	data = CreateUserForm()
 	if request.method == 'POST':
-		form = CreateUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			username = form.cleaned_data.get('username')
+		data = CreateUserForm(request.POST or None)
+		if data.is_valid():
+			user = data.save()
+			username = data.cleaned_data.get('username')
 			group = Group.objects.get(name='user')
 			user.groups.add(group)
 
@@ -40,7 +55,7 @@ def register_page(request):
 			return redirect('login')
 		
 
-	context = {'form':form}
+	context = {'info':data,}
 	return render(request, 'register.html', context)
 
 @unauthenticated_user
@@ -119,6 +134,12 @@ def booking_user(request):
 #bill
 
 #payment
+
+
+
+
+
+
 
 
 
