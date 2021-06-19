@@ -12,7 +12,7 @@ urlpatterns = [
   path('booking/', views.booking_admin, name='admin-booking'),
   path('calendar/', views.calendar, name='calendar'),
   path('forgot_password/', views.forgot_password, name='forgot_pass'),
-  #path('home/', views.user_page, name='home'),
+  #path('home/', views.user_page, name='home')
   path('home/', views.booking_user, name='home'),
 
 ]
