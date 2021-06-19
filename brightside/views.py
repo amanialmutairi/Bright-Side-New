@@ -21,10 +21,10 @@ def forgot_password(request):
 
   
 def user_profile(request):
-  return render(request, 'user.html')
+  return render(request, 'profile.html')
 
 @unauthenticated_user   
-def sign_up(request):
+def register(request):
 
 	data = CreateUserForm()
 	if request.method == 'POST':
@@ -41,7 +41,7 @@ def sign_up(request):
 		
 
 	context = {'info':data,}
-	return render(request, 'signup.html', context)
+	return render(request, 'register.html', context)
 
 @unauthenticated_user
 def login_page(request):
@@ -59,7 +59,7 @@ def login_page(request):
 			messages.info(request, 'Username OR password is incorrect')
 
 	context = {}
-	return render(request, 'signin.html', context)
+	return render(request, 'login.html', context)
 
 def logout_user(request):
 	logout(request)
