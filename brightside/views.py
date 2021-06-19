@@ -21,6 +21,7 @@ def forgot_password(request):
   return render(request, 'forgot-password.html')
 
   
+
 def user_profile(request, profile_id):
   profile = get_object_or_404(Patient, id=profile_id)
   f = PatientForm(request.POST or None, instance= profile)
@@ -33,10 +34,11 @@ def user_profile(request, profile_id):
     form.int = (form.p_username)
     form.save()
     return redirect('profile', id=profile_id)
-  return render(request, 'user.html', context=data)
+  return render(request, 'profile.html', context=data)
+
 
 @unauthenticated_user   
-def sign_up(request):
+def register(request):
 
 	data = CreateUserForm()
 	if request.method == 'POST':
@@ -53,7 +55,7 @@ def sign_up(request):
 		
 
 	context = {'info':data,}
-	return render(request, 'signup.html', context)
+	return render(request, 'register.html', context)
 
 @unauthenticated_user
 def login_page(request):
@@ -71,7 +73,7 @@ def login_page(request):
 			messages.info(request, 'Username OR password is incorrect')
 
 	context = {}
-	return render(request, 'signin.html', context)
+	return render(request, 'login.html', context)
 
 def logout_user(request):
 	logout(request)
