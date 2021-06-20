@@ -16,6 +16,7 @@ urlpatterns = [
   path('index/count_appointment', views.count_appointment, name='count_apt'),
   path('index/count_patient', views.count_patient, name='count_patient'),
   path('index/total_earning', views.total_earning, name='total_earning'),
+  path('delete/appointment/<int:apt_id>/', views.delete_appointment),
 
 
 
