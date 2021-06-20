@@ -8,6 +8,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .models import Physician
+from datetime import date
+
+
 
 
 from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
@@ -84,16 +87,16 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def user_page(request):
-    docs = Physician.objects.all()
-    context = {'docs': docs}
-    return render(request, 'user_home.html', context)
+#def user_page(request):
+ #   docs = Physician.objects.all()
+  #  context = {'docs': docs}
+   # return render(request, 'user_home.html', context)
 
 # requests
 
 
-def request_view(request):
-    return render(request, 'requests.html')
+def manage_view(request):
+    return render(request, 'manage_apt.html')
 
 # view_calendar
 
@@ -124,13 +127,30 @@ def booking_user(request):
         return redirect("home")
     return render(request, 'user_home.html', context=data)
 
-# reseptionist
+def count_appointment(request):
+  appointment = Appointment.objects.filter(appointment_date=date.today()).count()
+  context={'appointment': appointment}
+  return render(request, 'index.html', context)
 
+def count_patient(request):
+  patient = Patient.objects.all().count()
+  data = {}
+  data['patient'] = patient
+  return render(request, 'index.html', context=data)
 
-# service
+def total_earning(request):
+  data = {}
+  return render(request, 'index.html', context=data)
 
-# Doctor
-
-# bill
-
-# payment
+def delete_appointment(request, apt_id):
+  delete_apt = get_object_or_404(Appointment, id=apt_id)
+  m = f"Do you want to delete {delete_apt.patient} appointment on {delete_apt.appointment_date} time: {delete_apt.appointment_time}?"
+  
+  data={}
+  data['message'] = m
+  if "confirm" in request.GET:
+    delete_apt.delete()
+    return redirect('manage')
+  elif 'cancel' in request.GET:
+    return redirect('manage')
+  return render(request, 'manage_apt.html', context=data)
