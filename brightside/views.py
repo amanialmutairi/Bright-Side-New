@@ -95,8 +95,8 @@ def index(request):
 # requests
 
 
-def request_view(request):
-    return render(request, 'requests.html')
+def manage_view(request):
+    return render(request, 'manage_apt.html')
 
 # view_calendar
 
@@ -150,7 +150,7 @@ def delete_appointment(request, apt_id):
   data['message'] = m
   if "confirm" in request.GET:
     delete_apt.delete()
-    return redirect('requests')
+    return redirect('manage')
   elif 'cancel' in request.GET:
-    return redirect('requests')
-  return render(request, 'requests.html', context=data)
+    return redirect('manage')
+  return render(request, 'manage_apt.html', context=data)
