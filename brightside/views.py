@@ -24,7 +24,10 @@ from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, 
 def forgot_password(request):
     return render(request, 'forgot-password.html')
 
+def profile_path(request):
 
+  return render(request,'profile.html')
+  
 def user_profile(request, profile_id):
     profile = get_object_or_404(Patient, id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
