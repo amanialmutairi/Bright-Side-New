@@ -1,20 +1,15 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
-from .models import Physician
 from datetime import date
 
 
 
 
-from .forms import ReseptionistForm, CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser
-from .forms import ReseptionistForm, CreateUserForm, PatientForm
+from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm
 from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
 
 # Create your views here.
@@ -25,7 +20,6 @@ def forgot_password(request):
     return render(request, 'forgot-password.html')
 
 def profile_path(request):
-
   return render(request,'profile.html')
   
 def user_profile(request, profile_id):
@@ -79,14 +73,12 @@ def logout_user(request):
     return redirect('login')
 
 
-
+#receptionist dashboard
 def index(request):
     appointment = Appointment.objects.all()
     patient = Patient.objects.all()
-    #total_appointment = Appointment.count()
-
     context = {'appointment': appointment, 'patient': patient}
-    # 'total_appointment':total_appointment
+
     return render(request, 'index.html', context)
 
 
@@ -95,20 +87,15 @@ def index(request):
   #  context = {'docs': docs}
    # return render(request, 'user_home.html', context)
 
-# requests
-
-
+# Manage Appointment Pathing
 def manage_view(request):
     return render(request, 'manage_apt.html')
 
-# view_calendar
-
-
+# view_calendar pathing
 def calendar(request):
     return render(request, 'calendar.html')
+
 # Admin Booking
-
-
 def booking_admin(request):
     data = {}
     f = CreateAppointmentAdmin(request.POST or None)
@@ -118,9 +105,7 @@ def booking_admin(request):
         return redirect("admin-booking")
     return render(request, 'booking.html', context=data)
 
-# User booking_admin
-
-
+# User Booking
 def booking_user(request):
     data = {}
     f = CreateAppointmentUser(request.POST or None)
@@ -142,7 +127,11 @@ def count_patient(request):
   return render(request, 'index.html', context=data)
 
 def total_earning(request):
+  calc_earning = Appointment.objects.filter(service=id)
   data = {}
+  total = sum[calc_earning.service_price]
+  
+  data['total'] = total
   return render(request, 'index.html', context=data)
 
 def delete_appointment(request, apt_id):
