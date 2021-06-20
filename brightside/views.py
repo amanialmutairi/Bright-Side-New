@@ -125,10 +125,13 @@ def booking_user(request):
     return render(request, 'user_home.html', context=data)
 
 def count_appointment(request):
+  appointment = Appointment.objects.all().count()
   data= {}
+  data['appointment'] = appointment
   return render(request, 'index.html', context=data)
+
 def count_patient(request):
-  patient = Patient.objects.count()
+  patient = Patient.objects.all().count()
   data= {}
   data['patient'] = patient
   return render(request, 'index.html', context=data)
