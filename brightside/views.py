@@ -136,7 +136,7 @@ def total_earning(request):
 
 def delete_appointment(request, apt_id):
   delete_apt = get_object_or_404(Appointment, id=apt_id)
-  m = f"Do you want to delete {delete_apt.patient} appointment on {delete_apt.appointment_date} time: {delete_apt.appointment_time}?"
+  m = f"Do you want to delete {delete_apt.patient} appointment on {delete_apt.appointment_date} time: {delete_apt.appointment_time} with dr {delete_apt.physician}?"
   
   data={}
   data['message'] = m

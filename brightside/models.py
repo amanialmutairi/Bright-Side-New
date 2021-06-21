@@ -25,7 +25,7 @@ class Physician(models.Model):
   ph_speciality =  models.IntegerField(choices=Speciality, default=0)
 
   def __str__(self):
-    return f" First Name: {self.ph_first_name} - Last Name: {self.ph_last_name} - Speciality: {self.ph_speciality}"
+    return f"{self.ph_first_name}  {self.ph_last_name} "
 
 class Ph_service(models.Model):
   physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
