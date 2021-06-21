@@ -13,11 +13,10 @@
 .styled-table thead tr {
     background-color: #3429a9;
     color: #3429a9;
-    text-align: left;
 }
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 40px;
 }
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
@@ -194,7 +193,7 @@ input[type=submit]:hover {
 </form>
     <table class="styled-table">
       {% for x in patient %}
-      <td align="center" colspan="3"><h2>{{ x }}</h2></td>
+      <td align="center" colspan="4"><h2>{{ x }}</h2></td>
       {% endfor %}
     </tr>
     
@@ -202,13 +201,15 @@ input[type=submit]:hover {
       <td align="center">Date</td>
       <td align="center">Time</td>
       <td align="center">Service</td>
+      <td align="center">Price</td>
     </tr>
 
     {% for x in patient_list %}
     <tr>
-      <td align="center">{{x.appointment_date}}</td>
+       <td align="center"> {{x.appointment_date}}</td>
       <td align="center">{{x.appointment_time}}</td>
       <td align="center">{{x.service}}</td>
+      <td align="center"> {{x.service.service_price}}</td>
     </tr>
     {% endfor %}
   </table>
