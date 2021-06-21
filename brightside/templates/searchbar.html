@@ -1,23 +1,42 @@
 {% load static %}
 <style>
-.center-card {
-  display: inline-block;
-  justify-content: center;
-  width: 1800px
-  
+.styled-table {
+    border-collapse: collapse;
+    margin: 100px 200px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-height: 300px;
+    min-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+   
+}
+.styled-table thead tr {
+    background-color: #3429a9;
+    color: #3429a9;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
 
-.header-center {
-  
-  margin-left: 260px;
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
 }
-.submit-center {
- margin-left: 350px;
- 
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #0061ff;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #0061ff;
 }
 input[type=submit] {
-  width: 140px;
-  height: 45px;
+  width: 100px;
+  height: 30px;
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
@@ -34,41 +53,50 @@ input[type=submit] {
 }
 input[type=submit]:hover {
   background-color: #3a88fe;
-  box-shadow: 0px 15px 20px rgba(23, 100, 73, 0.2);
+  
   color: #fff;
   transform: translateY(-1px);
 }
+.searchbar {
+  border-collapse: collapse;
+  margin: 20px 30px;
+  width: 300px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  padding: 3px ;
+}
 </style>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{{ form.media }}
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BrightSide :) - Buttons</title>
+    <title>BrightSide :) - Patient Detail</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" type="text/css" href="{% static '/css/all.min.css' %}">
+
     <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    
+
     <!-- Custom styles for this template-->
     <link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
-    
-    </head>
-    
-    <body id="page-top">
-    
+    <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
+
+</head>
+
+<body id="page-top">
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 <!-- Sidebar -->
@@ -126,12 +154,12 @@ input[type=submit]:hover {
 
         </ul>
         <!-- End of Sidebar -->
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
-    
-                <!-- Main Content -->
-                <div id="content">
-    
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
                 <!-- Topbar -->
                                   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     
@@ -159,52 +187,31 @@ input[type=submit]:hover {
                         </ul>
     
                     </nav>
-                <!-- End of Topbar -->
-
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-<div class="center-card">
-                    <!-- Page Heading -->
-                   <div class="header-center"> <h1 class="h3 mb-4 text-gray-800">Book For Our Dear Patient!</h1>
-</div>
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Circle Buttons -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Appointment Form</h6>
-                                </div>
-                                <div class="card-body">
-                                   
-                                    <!-- Circle Buttons (Default) -->
-
-
-<h3>Create an appointment</h3>
-    <form action="" method="post">
-  	{% csrf_token %}
-  	{% bootstrap_form form %}
+  <form action="">
     
-  <div class="submit-center">	<input type="submit" value="Submit"></div>
-    </form>
-                                </div>
-                            </div>
+    <input class="searchbar" type="text" name="search" placeholder="Search by patient id" value="{{request.GET.patient}}">
+    <input type="submit" value="Search">
+</form>
+    <table class="styled-table">
+      {% for x in patient %}
+      <td align="center" colspan="3"><h2>{{ x }}</h2></td>
+      {% endfor %}
+    </tr>
+    
+    <tr class="active-row">
+      <td align="center">Date</td>
+      <td align="center">Time</td>
+      <td align="center">Service</td>
+    </tr>
 
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div></div>
-            <!-- End of Main Content -->
+    {% for x in patient_list %}
+    <tr>
+      <td align="center">{{x.appointment_date}}</td>
+      <td align="center">{{x.appointment_time}}</td>
+      <td align="center">{{x.service}}</td>
+    </tr>
+    {% endfor %}
+  </table>
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -215,20 +222,10 @@ input[type=submit]:hover {
                 </div>
             </footer>
             <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
+ <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         
     </a>
-
-  
-
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
@@ -238,6 +235,13 @@ input[type=submit]:hover {
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'js/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/chart-pie-demo.js' %}"></script>
 
 </body>
 
