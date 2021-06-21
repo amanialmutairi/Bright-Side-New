@@ -75,9 +75,9 @@ def logout_user(request):
 
 #receptionist dashboard
 def index(request):
-    appointment = Appointment.objects.all()
-    patient = Patient.objects.all()
-    context = {'appointment': appointment, 'patient': patient}
+    appointments = Appointment.objects.filter(appointment_date=date.today()).count()
+    patients = Patient.objects.all().count()
+    context = {'count_appointments': appointments, 'count_patients': patients}
 
     return render(request, 'index.html', context)
 
@@ -115,19 +115,12 @@ def booking_user(request):
         return redirect("home")
     return render(request, 'user_home.html', context=data)
 
-def count_appointment(request):
-  appointment = Appointment.objects.filter(appointment_date=date.today()).count()
-  context={'appointment': appointment}
-  return render(request, 'index.html', context)
 
-def count_patient(request):
-  patient = Patient.objects.all().count()
-  data = {}
-  data['patient'] = patient
-  return render(request, 'index.html', context=data)
+
+
 
 def total_earning(request):
-  calc_earning = Appointment.objects.filter(service=id)
+  calc_earning = Appointment.objects.filter()
   data = {}
   total = sum[calc_earning.service_price]
   
