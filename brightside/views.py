@@ -146,3 +146,9 @@ def delete_appointment(request, apt_id):
   elif 'cancel' in request.GET:
     return redirect('manage')
   return render(request, 'manage_apt.html', context=data)
+
+def dynamic_patient_view(request):
+    data = {}
+    data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
+    data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
+    return render(request, "searchbar.html", context = data)
