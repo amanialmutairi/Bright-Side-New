@@ -65,7 +65,7 @@ def logout_user(request):
 def index(request):
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
     patients = Patient.objects.all().count()
-    calc_earning = Appointment.objects.all().annotate(total_earn= Sum(F('service__service_price') * F('id')))
+    calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
     
     context = {'count_appointments': appointments, 'count_patients': patients, 'total': calc_earning}
 
