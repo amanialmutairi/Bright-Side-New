@@ -14,11 +14,9 @@ urlpatterns = [
   path('calendar/', views.calendar, name='calendar'),
   path('forgot_password/', views.forgot_password, name='forgot_pass'),
   path('home/', views.booking_user, name='home'),
-  
-  path('index/total_earning', views.total_earning, name='total_earning'),
   path('index/', views.index, name='index'),
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
-  path('patient/detail', views.dynamic_patient_view, name= 'patient-detail')
+  path('patient/detail', views.patient_list_view, name= 'patient-detail')
 
 
 
