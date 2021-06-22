@@ -53,20 +53,17 @@ class Patient(models.Model):
         return self.p_first_name
 
 
+#class appointment(models.Model):
+class Appointment(models.Model):
+  appointment_date = models.DateField(null=True)
+  appointment_time = models.TimeField(null=True)
+  patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
+  reseptionist = models.ForeignKey('Reseptionist', on_delete=models.SET_NULL, blank=True, null=True)
+  service = models.ForeignKey('Service', on_delete=models.CASCADE)
+  physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
 
-#class bill(models.Model):
+  #class bill(models.Model):
 class Bill(models.Model):
-  STATUS = (
-        (0, "Paid"),
-        (1, "Unpaid"),
-    )
-  bill_id = models.CharField(max_length=15, unique=True)
-  bill_date = models.DateTimeField(null=True)
-  bill_status = models.IntegerField(choices=STATUS, default=1)
-
-
-#class payment(models.Model):
-class Payment(models.Model):
   payment_method = (
         (0, "VISA"),
         (1, "Master Card"),
@@ -77,19 +74,13 @@ class Payment(models.Model):
         (0, "Paid"),
         (1, "Unpaid"),
     )
-  receipt_id = models.CharField(max_length=15, unique=True)
-  total_pay = models.CharField(max_length=15)
-  payment_date = models.DateTimeField(null=True)
-  status = models.IntegerField(choices=STATUS, default=1)
+  bill_id = models.CharField(max_length=15, unique=True)
+  bill_date = models.DateTimeField(null=True)
+  bill_status = models.IntegerField(choices=STATUS, default=1)
+  total_pay = models.DecimalField(max_digits=8, decimal_places=2)
   payment_method = models.IntegerField(choices=payment_method, default=0)
-  patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
-  
 
-#class appointment(models.Model):
-class Appointment(models.Model):
-  appointment_date = models.DateField(null=True)
-  appointment_time = models.TimeField(null=True)
+  appointment = models.OneToOneField(Appointment, 
+          on_delete = models.CASCADE)
   patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
-  reseptionist = models.ForeignKey('Reseptionist', on_delete=models.SET_NULL, blank=True, null=True)
-  service = models.ForeignKey('Service', on_delete=models.CASCADE)
-  physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
+

@@ -10,7 +10,7 @@ from django.db.models import Sum, Count, F
 
 
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm
-from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
+from .models import Patient, Reseptionist, Service, Appointment, Bill, Physician
 
 # Create your views here.
 

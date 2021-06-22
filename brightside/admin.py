@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Patient, Reseptionist, Service, Bill, Appointment, Physician, Payment
+from .models import Patient, Reseptionist, Service, Bill, Appointment, Physician
 # Register your models here.
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
@@ -14,14 +14,10 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_display = [ 'appointment_date', 'appointment_time']
 
 
-@admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
-    list_display = ['receipt_id', 'total_pay', 'payment_date', 'payment_method']
-
 
 @admin.register(Bill)
 class BillAdmin(admin.ModelAdmin):
-    list_display = ['bill_id', 'bill_date', 'bill_status',]
+    list_display = ['bill_id', 'bill_date', 'bill_status','payment_method','total_pay']
 
 @admin.register(Reseptionist)
 class ReseptionistAdmin(admin.ModelAdmin):
