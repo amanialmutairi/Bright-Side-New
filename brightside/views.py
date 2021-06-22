@@ -10,7 +10,7 @@ from django.db.models import Sum, Count, F
 
 
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm
-from .models import Patient, Reseptionist, Service, Appointment, Bill, Payment, Physician
+from .models import Patient, Reseptionist, Service, Appointment, Bill, Physician
 
 # Create your views here.
 
@@ -35,18 +35,6 @@ def user_profile(request, profile_id):
         form.save()
         return redirect('profile', profile_id=profile_id)
     return render(request, 'profile.html', context=data)
-
-
-
-#def register(request):
- # data = CreateUserForm(request.POST or None)
-  #if data.is_valid():
-   #    data.save()
-
- # return redirect('login')
-
-  #context = {'info': data, }
-  #return render(request, 'register.html', context)
 
 
 
@@ -78,16 +66,13 @@ def index(request):
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
     patients = Patient.objects.all().count()
     calc_earning = Appointment.objects.all().annotate(total_earn= Sum(F('service__service_price') * F('id')))
-
+    
     context = {'count_appointments': appointments, 'count_patients': patients, 'total': calc_earning}
 
     return render(request, 'index.html', context)
 
 
-#def user_page(request):
- #   docs = Physician.objects.all()
-  #  context = {'docs': docs}
-   # return render(request, 'user_home.html', context)
+
 
 # Manage Appointment Pathing
 def manage_view(request):
