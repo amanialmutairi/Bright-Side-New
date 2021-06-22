@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from datetime import date
-
+from django.db.models import Sum, Count, F
 
 
 
@@ -77,7 +77,9 @@ def logout_user(request):
 def index(request):
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
     patients = Patient.objects.all().count()
-    context = {'count_appointments': appointments, 'count_patients': patients}
+    calc_earning = Appointment.objects.all().annotate(total_earn= Sum(F('service__service_price') * F('id')))
+
+    context = {'count_appointments': appointments, 'count_patients': patients, 'total': calc_earning}
 
     return render(request, 'index.html', context)
 
@@ -118,15 +120,6 @@ def booking_user(request):
 
 
 
-
-def total_earning(request):
-  calc_earning = Appointment.objects.filter()
-  data = {}
-  total = sum[calc_earning.service_price]
-  
-  data['total'] = total
-  return render(request, 'index.html', context=data)
-
 def delete_appointment(request, apt_id):
   delete_apt = get_object_or_404(Appointment, id=apt_id)
   m = f"Do you want to delete {delete_apt.patient} appointment on {delete_apt.appointment_date} time: {delete_apt.appointment_time} with dr {delete_apt.physician}?"
@@ -140,7 +133,7 @@ def delete_appointment(request, apt_id):
     return redirect('manage')
   return render(request, 'manage_apt.html', context=data)
 
-def dynamic_patient_view(request):
+def patient_list_view(request):
     data = {}
     data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
