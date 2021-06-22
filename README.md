@@ -1,9 +1,9 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=426739&assignment_repo_type=GroupAssignmentRepo)
-# Hospital Booking System
+# Dental Clinic Booking System
 
 ## Introduction 
 
-A hospital booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, serive & the physician they want.If the patient decided to delete an appointment, they will have to send a delete request to the reception employee. The reception employee can add, delete & change any appointment booked by patients. Also, when changing or deleting an appointment the reception employee will notify the patient through email.
+A dental clinic booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, service & the physician they want. Also, patients can view their bills through their profile and check each bill status. Furthermore, each patient can update their own profile. The reception employee can add, delete & change any appointment booked by patients. They can also view each patient booking details and how many appointment they have. Receptionist can create a patient account too. in receptionist dashboard they can view statistic details such as total earning, appointments per day and total patient registered. In dashboard there is a calendar view where receptionist can view all the appointments organized per day and hour.
 
 ## Requirememts 
 
