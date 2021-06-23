@@ -9,8 +9,8 @@ from django.db.models import Sum, Count, F
 
 
 
-from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm
-from .models import Patient, Reseptionist, Service, Appointment, Bill, Physician
+from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm, CreatPatientForm#, BillForm
+from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
 
 # Create your views here.
 
@@ -26,6 +26,7 @@ def user_profile(request, profile_id):
     profile = get_object_or_404(Patient, id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
     data = {}
+    data['bill'] = Bill.objects.get(id=id)
     data['user_profile'] = Patient.objects.get(id=profile_id)
     data['user_form'] = f
 
@@ -123,3 +124,21 @@ def patient_list_view(request):
     data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
     return render(request, "searchbar.html", context = data)
+
+def bill_view(request, id):
+    data = {}
+    data['bill'] = Bill.objects.get(id=id)
+    #f = BillForm(request.POST or None, initial={'bill':patient.id})
+    #data['from'] = f
+    #if f.is_valid():
+     # f.save()
+    #return redirect('user-bill', id=id)
+    return render(request, "bill.html", context=data)
+
+def create_patient_account(request):
+    f = CreatPatientForm(request.POST or None)
+    data = {} 
+    data['form'] = f
+    if f.is_valid():
+      f.save()
+    return render(request, "create_patient.html", context=data)

@@ -40,3 +40,13 @@ class PatientForm(ModelForm):
   class Meta:
     model = Patient
     fields = ['p_username', 'p_first_name', 'p_last_name', 'p_email', 'p_password']
+
+#class BillForm(ModelForm):
+ # class Meta:
+  #  model = Bill
+   # fields = ['bill_id','bill_date', 'bill_status' ,'total_pay', 'payment_method']
+
+class CreatPatientForm(ModelForm):
+  class Meta:
+    model = Patient
+    fields = ['p_username','p_first_name', 'p_last_name' ,'p_email', 'p_password']
