@@ -67,8 +67,10 @@ def index(request):
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
     patients = Patient.objects.all().count()
     calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
-    revenue = [1,2,3,1,5,6,7,8,9,10,11,12]
-    month = ['JAN','FEB','MAR','APR','MAY','JUN','JUL', 'AUG','SEPT','OCT', 'NOV', 'DEC']
+    prices = Appointment.objects.all()
+    revenue = [x.service.service_price for x in prices]
+    
+    month = [x.appointment_date for x in prices]
     c = line_plot(revenue,month)
     
     context = {'daily_appointments': appointments, 'count_patients': patients, 'total': calc_earning,'all_appointments': all_appointments, 'chart': c }
