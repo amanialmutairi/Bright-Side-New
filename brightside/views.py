@@ -7,7 +7,7 @@ from django.contrib import messages
 from datetime import date
 from django.db.models import Sum, Count, F
 from .plots import line_plot, pie_plot, bar_plot
-
+from django.contrib.auth.decorators import login_required
 
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm, CreatPatientForm#, BillForm
 from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
@@ -63,6 +63,7 @@ def user_profile(request, profile_id):
 
 
 #receptionist dashboard
+@login_required
 def index(request):
     all_appointments = Appointment.objects.all()
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
