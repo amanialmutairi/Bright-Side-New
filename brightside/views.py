@@ -21,7 +21,7 @@ def forgot_password(request):
 
 def profile_path(request):
   return render(request,'profile.html')
-  
+
 def user_profile(request, profile_id):
     profile = get_object_or_404(Patient, id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
