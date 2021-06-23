@@ -16,8 +16,8 @@ from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
 
 
 # users
-def forgot_password(request):
-    return render(request, 'forgot-password.html')
+#def forgot_password(request):
+ #   return render(request, 'forgot-password.html')
 
 def profile_path(request):
   return render(request,'profile.html')
@@ -39,27 +39,27 @@ def user_profile(request, profile_id):
 
 
 
-def login_page(request):
+#def login_page(request):
 
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+ #   if request.method == 'POST':
+  #      username = request.POST.get('username')
+   #     password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+    #    user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.info(request, 'Username OR password is incorrect')
+     #   if user is not None:
+      #      login(request, user)
+       #     return redirect('index')
+        #else:
+         #   messages.info(request, 'Username OR password is incorrect')
 
-    context = {}
-    return render(request, 'login.html', context)
+    #context = {}
+    #return render(request, 'login.html', context)
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('login')
+#def logout_user(request):
+ #   logout(request)
+  #  return redirect('login')
 
 
 #receptionist dashboard
