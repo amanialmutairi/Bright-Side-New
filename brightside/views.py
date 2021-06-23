@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from datetime import date
 from django.db.models import Sum, Count, F
-
+from .plots import line_plot, pie_plot, bar_plot
 
 
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm
@@ -63,11 +63,17 @@ def logout_user(request):
 
 #receptionist dashboard
 def index(request):
+    all_appointments = Appointment.objects.all()
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
     patients = Patient.objects.all().count()
     calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
+    prices = Appointment.objects.all()
+    revenue = [x.service.service_price for x in prices]
     
-    context = {'count_appointments': appointments, 'count_patients': patients, 'total': calc_earning}
+    month = [x.appointment_date for x in prices]
+    c = line_plot(revenue,month)
+    
+    context = {'daily_appointments': appointments, 'count_patients': patients, 'total': calc_earning,'all_appointments': all_appointments, 'chart': c }
 
     return render(request, 'index.html', context)
 
@@ -123,3 +129,4 @@ def patient_list_view(request):
     data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
     return render(request, "searchbar.html", context = data)
+

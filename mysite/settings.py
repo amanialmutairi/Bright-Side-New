@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'brightside',
     'bootstrap_datepicker_plus',
-    "bootstrap4",
+    'bootstrap4',
+    'matplotlib',
 ]
 
 MIDDLEWARE = [

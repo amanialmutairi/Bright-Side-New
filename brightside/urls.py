@@ -16,8 +16,7 @@ urlpatterns = [
   path('home/', views.booking_user, name='home'),
   path('index/', views.index, name='index'),
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
-  path('patient/detail', views.patient_list_view, name= 'patient-detail')
-
-
+  path('patient/detail', views.patient_list_view, name= 'patient-detail'),
+  
 
 ]
