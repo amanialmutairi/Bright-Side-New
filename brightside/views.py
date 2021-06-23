@@ -26,7 +26,7 @@ def user_profile(request, profile_id):
     profile = get_object_or_404(Patient, id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
     data = {}
-    data['bill'] = Bill.objects.get(id=id)
+    
     data['user_profile'] = Patient.objects.get(id=profile_id)
     data['user_form'] = f
 
