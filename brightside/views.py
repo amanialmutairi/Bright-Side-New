@@ -7,7 +7,7 @@ from django.contrib import messages
 from datetime import date
 from django.db.models import Sum, Count, F
 from .plots import line_plot, pie_plot, bar_plot
-
+from django.contrib.auth.decorators import login_required
 
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm, CreatPatientForm#, BillForm
 from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
@@ -16,8 +16,8 @@ from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
 
 
 # users
-def forgot_password(request):
-    return render(request, 'forgot-password.html')
+#def forgot_password(request):
+ #   return render(request, 'forgot-password.html')
 
 def profile_path(request):
   return render(request,'profile.html')
@@ -26,7 +26,7 @@ def user_profile(request, profile_id):
     profile = get_object_or_404(Patient, id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
     data = {}
-    data['bill'] = Bill.objects.get(id=id)
+    
     data['user_profile'] = Patient.objects.get(id=profile_id)
     data['user_form'] = f
 
@@ -39,30 +39,31 @@ def user_profile(request, profile_id):
 
 
 
-def login_page(request):
+#def login_page(request):
 
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+ #   if request.method == 'POST':
+  #      username = request.POST.get('username')
+   #     password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+    #    user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.info(request, 'Username OR password is incorrect')
+     #   if user is not None:
+      #      login(request, user)
+       #     return redirect('index')
+        #else:
+         #   messages.info(request, 'Username OR password is incorrect')
 
-    context = {}
-    return render(request, 'login.html', context)
+    #context = {}
+    #return render(request, 'login.html', context)
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('login')
+#def logout_user(request):
+ #   logout(request)
+  #  return redirect('login')
 
 
 #receptionist dashboard
+@login_required
 def index(request):
     all_appointments = Appointment.objects.all()
     appointments = Appointment.objects.filter(appointment_date=date.today()).count()
