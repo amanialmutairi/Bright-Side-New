@@ -17,6 +17,7 @@ urlpatterns = [
   path('index/', views.index, name='index'),
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
   path('patient/detail', views.patient_list_view, name= 'patient-detail'),
-  
+  path('user/bill/<int:id>/' , views.bill_view, name='user-bill'),
+  path('create/patient/' , views.create_patient_account, name='create-patient')
 
 ]
