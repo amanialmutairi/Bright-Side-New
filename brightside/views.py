@@ -73,7 +73,7 @@ def index(request):
     revenue = [x.service.service_price for x in prices]
     
     month = [x.appointment_date for x in prices]
-    c = line_plot(revenue,month)
+    c = pie_plot(revenue,month)
     
     context = {'daily_appointments': appointments, 'count_patients': patients, 'total': calc_earning,'all_appointments': all_appointments, 'chart': c }
 
