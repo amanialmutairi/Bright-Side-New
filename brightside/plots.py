@@ -22,7 +22,7 @@ def line_plot(x, y):
   return get_graph()
 
 def pie_plot(props, labels):
-  plt.figure()
+  plt.figure(figsize=(5.5,4))
   plt.pie(props, labels=labels)
   return get_graph()
 
