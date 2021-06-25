@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from annoying.fields import AutoOneToOneField
 # Create your models here.
 
 #class reseptionist(models.Model):
@@ -42,7 +43,7 @@ class Service(models.Model):
 
 #class patient(models.Model):
 class Patient(models.Model):
-    profile = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
+    profile = AutoOneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     #p_username = models.CharField(max_length=50, unique=True)
     p_first_name = models.CharField(max_length=50)
     p_last_name =  models.CharField(max_length=50)

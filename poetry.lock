@@ -128,6 +128,18 @@ version = ">=1.7"
 
 [[package]]
 category = "main"
+description = "This is a django application that tries to eliminate annoying things in the Django framework."
+name = "django-annoying"
+optional = false
+python-versions = "*"
+version = "0.10.6"
+
+[package.dependencies]
+Django = ">=1.11"
+six = "*"
+
+[[package]]
+category = "main"
 description = "Bootstrap3/Bootstrap4 DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput with date-range-picker functionality for django version 2.1, 2.0, 1.11, 1.10 and 1.8"
 name = "django-bootstrap-datepicker-plus"
 optional = false
@@ -351,7 +363,7 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "10693c49b2abebb334dc18b14944da49354a667a2a460af4fae9ed8c0990ae32"
+content-hash = "74f25b2ffac24795917168f0ee3516ef2328fc3f51873ad130118681a1c4e994"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -451,6 +463,10 @@ django = [
 ]
 django-allauth = [
     {file = "django-allauth-0.44.0.tar.gz", hash = "sha256:e51af457466022f52154d74c8523ac69375120fad2acce6e239635d85e610b25"},
+]
+django-annoying = [
+    {file = "django-annoying-0.10.6.tar.gz", hash = "sha256:083b5e26f140f86178fcb47931f69b7ff75181ccd1e318d9c218ae9babc1805e"},
+    {file = "django_annoying-0.10.6-py2.py3-none-any.whl", hash = "sha256:e230f28fec0559b4fdb621ff202068a78170ada2ac1ec7a73ba822cc1f737791"},
 ]
 django-bootstrap-datepicker-plus = [
     {file = "django-bootstrap-datepicker-plus-3.0.5.tar.gz", hash = "sha256:490058eba99d47f48a7d24fa78581c0e36375bdc7aa9605783eeb170d51fd0df"},

@@ -46,7 +46,3 @@ class PatientForm(ModelForm):
   #  model = Bill
    # fields = ['bill_id','bill_date', 'bill_status' ,'total_pay', 'payment_method']
 
-class CreatPatientForm(ModelForm):
-  class Meta:
-    model = Patient
-    fields = '__all__'
