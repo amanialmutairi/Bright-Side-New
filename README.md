@@ -48,6 +48,7 @@ Yousif Alfailakawi - 2162117711
 Amani Almutairi - 2152113593
 
 ## Bonuses:
--  Created permission roles.
--  Added signin/signup form.
+-  chart in views.py line 40.
+-  calculate today appointments only in views.py line 40.
+-  used allauth package.
  
