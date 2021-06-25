@@ -39,7 +39,7 @@ class CreateUserForm(UserCreationForm):
 class PatientForm(ModelForm):
   class Meta:
     model = Patient
-    fields = ['p_username', 'p_first_name', 'p_last_name', 'p_email', 'p_password']
+    fields = '__all__'
 
 #class BillForm(ModelForm):
  # class Meta:
@@ -49,4 +49,4 @@ class PatientForm(ModelForm):
 class CreatPatientForm(ModelForm):
   class Meta:
     model = Patient
-    fields = ['p_username','p_first_name', 'p_last_name' ,'p_email', 'p_password']
+    fields = '__all__'
