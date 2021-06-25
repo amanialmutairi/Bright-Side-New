@@ -9,15 +9,12 @@ from django.db.models import Sum, Count, F
 from .plots import line_plot, pie_plot, bar_plot
 from django.contrib.auth.decorators import login_required
 
+
 from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm, CreatPatientForm#, BillForm
 from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
 
 # Create your views here.
 
-
-# users
-#def forgot_password(request):
- #   return render(request, 'forgot-password.html')
 
 def profile_path(request):
   return render(request,'profile.html')
@@ -38,30 +35,6 @@ def user_profile(request, profile_id):
     return render(request, 'profile.html', context=data)
 
 
-
-#def login_page(request):
-
- #   if request.method == 'POST':
-  #      username = request.POST.get('username')
-   #     password = request.POST.get('password')
-
-    #    user = authenticate(request, username=username, password=password)
-
-     #   if user is not None:
-      #      login(request, user)
-       #     return redirect('index')
-        #else:
-         #   messages.info(request, 'Username OR password is incorrect')
-
-    #context = {}
-    #return render(request, 'login.html', context)
-
-
-#def logout_user(request):
- #   logout(request)
-  #  return redirect('login')
-
-
 #receptionist dashboard
 @login_required
 def index(request):
@@ -70,10 +43,12 @@ def index(request):
     patients = Patient.objects.all().count()
     calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
     prices = Appointment.objects.all()
+    
     revenue = [x.service.service_price for x in prices]
     
-    month = [x.appointment_date for x in prices]
-    c = pie_plot(revenue,month)
+    month = [x.appointment_date for x in prices ]
+    
+    c = line_plot(revenue,month)
     
     context = {'daily_appointments': appointments, 'count_patients': patients, 'total': calc_earning,'all_appointments': all_appointments, 'chart': c }
 

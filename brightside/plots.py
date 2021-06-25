@@ -22,8 +22,10 @@ def line_plot(x, y):
   return get_graph()
 
 def pie_plot(props, labels):
+  
   plt.figure(figsize=(5.5,4))
-  plt.pie(props, labels=labels)
+  plt.pie(props, labels=labels, autopct='%1.1f%%')
+  
   return get_graph()
 
 def bar_plot(x, h):
