@@ -20,11 +20,11 @@ def profile_path(request):
   return render(request,'profile.html')
 
 def user_profile(request, profile_id):
-    profile = get_object_or_404(Patient, id=profile_id)
+    profile = get_object_or_404(Patient, profile_id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
     data = {}
     
-    data['user_profile'] = Patient.objects.get(id=profile_id)
+    data['user_profile'] = Patient.objects.get(profile_id=profile_id)
     data['user_form'] = f
 
     if f.is_valid():
@@ -129,7 +129,7 @@ def create_patient_admin(request):
     return render(request, "create_patient.html", context=data)
 
 def create_patient_user(request):
-    f = CreatPatientForm(request.POST or None)
+    f = CreateUserForm(request.POST or None)
     data = {} 
     data['form'] = f
     if f.is_valid():
