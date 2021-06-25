@@ -10,7 +10,7 @@ from .plots import line_plot, pie_plot, bar_plot
 from django.contrib.auth.decorators import login_required
 
 
-from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm, CreatPatientForm#, BillForm
+from .forms import  CreateUserForm, CreateAppointmentAdmin, CreateAppointmentUser, PatientForm #, BillForm
 from .models import Patient, Reseptionist, Service,Appointment, Bill, Physician
 
 # Create your views here.
@@ -20,11 +20,11 @@ def profile_path(request):
   return render(request,'profile.html')
 
 def user_profile(request, profile_id):
-    profile = get_object_or_404(Patient, id=profile_id)
+    profile = get_object_or_404(Patient, profile_id=profile_id)
     f = PatientForm(request.POST or None, instance=profile)
     data = {}
     
-    data['user_profile'] = Patient.objects.get(id=profile_id)
+    data['user_profile'] = Patient.objects.get(profile_id=profile_id)
     data['user_form'] = f
 
     if f.is_valid():
@@ -106,7 +106,7 @@ def delete_appointment(request, apt_id):
 
 def patient_list_view(request):
     data = {}
-    data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
+    data['patient'] = Patient.objects.filter(profile_id=request.GET.get('search'))
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
     return render(request, "searchbar.html", context = data)
 
@@ -121,7 +121,7 @@ def bill_view(request):
     return render(request, "bill.html", context=data)
 
 def create_patient_admin(request):
-    f = CreatPatientForm(request.POST or None)
+    f = CreateUserForm(request.POST or None)
     data = {} 
     data['form'] = f
     if f.is_valid():
@@ -129,9 +129,11 @@ def create_patient_admin(request):
     return render(request, "create_patient.html", context=data)
 
 def create_patient_user(request):
-    f = CreatPatientForm(request.POST or None)
+    f = CreateUserForm(request.POST or None)
     data = {} 
     data['form'] = f
     if f.is_valid():
       f.save()
+      return redirect("home")
     return render(request, "create_account_user.html", context=data)
+
