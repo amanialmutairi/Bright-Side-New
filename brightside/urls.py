@@ -15,6 +15,9 @@ urlpatterns = [
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
   path('patient/detail', views.patient_list_view, name= 'patient-detail'),
   path('user/bill/<int:id>/' , views.bill_view, name='user-bill'),
-  path('create/patient/' , views.create_patient_account, name='create-patient')
+  path('create/patient/' , views.create_patient_admin, name='create-patient'),
+  path('create/user/' , views.create_patient_user, name='create-patient-user'),
+
+
 
 ]
