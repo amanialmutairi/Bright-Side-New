@@ -93,9 +93,9 @@ input[type=submit]:hover {
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link " href="#">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+          <li><a class="nav-link " href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}">Doctors</a></li>
           <li><a class="nav-link " href="{% url 'create-patient-user' %}">Create an Account</a></li>
           <li><a class="nav-link " href="{% url 'profile_path' %}">Profile</a></li>
           
@@ -157,8 +157,8 @@ input[type=submit]:hover {
                     <div class="col-sm-3">
                       <form action="" method="post">
                       {% csrf_token %}
-                      {{ user_form.as_p }}
-                     <input type="submit" value="Update user profile">
+                      {{ form.as_p }}
+                    <input type="submit" value="Create Account">
                     </form>
 
                     

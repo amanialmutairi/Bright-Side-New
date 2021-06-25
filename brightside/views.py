@@ -46,9 +46,10 @@ def index(request):
     
     revenue = [x.service.service_price for x in prices]
     
-    month = [x.appointment_date for x in prices ]
+    days = [x.appointment_date for x in prices ]
+
     
-    c = pie_plot(revenue,month)
+    c = line_plot(revenue,days)
     
     context = {'daily_appointments': appointments, 'count_patients': patients, 'total': calc_earning,'all_appointments': all_appointments, 'chart': c }
 
@@ -119,10 +120,18 @@ def bill_view(request):
     #return redirect('user-bill', id=id)
     return render(request, "bill.html", context=data)
 
-def create_patient_account(request):
+def create_patient_admin(request):
     f = CreatPatientForm(request.POST or None)
     data = {} 
     data['form'] = f
     if f.is_valid():
       f.save()
     return render(request, "create_patient.html", context=data)
+
+def create_patient_user(request):
+    f = CreatPatientForm(request.POST or None)
+    data = {} 
+    data['form'] = f
+    if f.is_valid():
+      f.save()
+    return render(request, "create_account_user.html", context=data)
