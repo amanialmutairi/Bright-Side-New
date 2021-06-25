@@ -62,8 +62,10 @@ def manage_view(request):
     return render(request, 'manage_apt.html')
 
 # view_calendar pathing
-def calendar(request):
-    return render(request, 'calendar.html')
+def view_all_apt(request):
+  data = {}
+  data['all_appointments'] = Appointment.objects.all()
+  return render(request, 'all_appointments.html', context = data)
 
 # Admin Booking
 def booking_admin(request):

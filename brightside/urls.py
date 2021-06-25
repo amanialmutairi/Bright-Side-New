@@ -6,13 +6,10 @@ urlpatterns = [
   
   path('home/profile/<int:profile_id>/', views.user_profile, name='profile'),
   path('home/profile/', views.profile_path, name='profile_path'),
-  #path('register/', views.register, name='register'),
-	#path('login/', views.login_page, name="login"),  
-	#path('logout/', views.logout_user, name="logout"),
+
   path('delete/appointment/', views.manage_view, name='manage'),
   path('booking/', views.booking_admin, name='admin-booking'),
-  path('calendar/', views.calendar, name='calendar'),
-  #path('forgot_password/', views.forgot_password, name='forgot_pass'),
+  path('all_appointments/', views.view_all_apt, name='all_appointments'),
   path('home/', views.booking_user, name='home'),
   path('index/', views.index, name='index'),
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
