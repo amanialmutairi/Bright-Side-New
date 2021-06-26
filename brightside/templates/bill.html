@@ -1,23 +1,210 @@
+bill.html
+
+{% load static %}
+<style>
+.center-card {
+  display: inline-block;
+  justify-content: center;
+  width: 1800px
+  
+}
+
+.header-center {
+  
+  margin-left: 260px;
+}
+.submit-center {
+ margin-left: 350px;
+ 
+}
+input[type=submit] {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+input[type=submit]:hover {
+  background-color: #3a88fe;
+  box-shadow: 0px 15px 20px rgba(23, 100, 73, 0.2);
+  color: #fff;
+  transform: translateY(-1px);
+}
+</style>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bill</title>
-</head>
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BrightSide :) - Buttons</title>
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/all.min.css' %}">
+    <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+    
+    </head>
+    
+    <body id="page-top">
+    
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+<!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    
+                </div>
+                <div class="sidebar-brand-text mx-3">BrightSide <sup>:)</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">
+                    
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                
+                <a class="nav-link" href="{% url 'admin-booking' %}">
+                    
+                    
+                    <span>Booking</span></a>
+
+                    
+<a class="nav-link" href="{% url 'all_appointments' %}">
+                    
+                    
+                    <span>View</span></a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <a class="nav-link" href="{% url 'manage' %}">
+                    
+                    
+                    <span>Manage Appointments</span></a>
+                    
+                    <a class="nav-link" href="{% url 'patient-detail' %}">
+                    
+                    
+                    <span>Patient Appointments Detail</span></a>
+                    
+
+                    <a class="nav-link" href="{% url 'create-patient' %}">
+                    
+                    
+                    <span>Create Patient Account</span></a>
+
+                    <a class="nav-link" href="{% url 'bill-detail' %}">
+                    
+                    
+                    <span>Bills</span></a>
+
+        </ul>
+        <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+    
+                <!-- Main Content -->
+                <div id="content">
+    
+                <!-- Topbar -->
+                                  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            
+                        </button>
+    
+    
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                        <li class="btn">
+                <a class="nav-link" href="{% url 'account_logout'%}">
+                    
+                    <span>{{user}}</span></a>
+            </li>
+
+            
+                        
+
+
+
+
+    
+                        </ul>
+    
+                    </nav>
+                <!-- End of Topbar -->
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+<div class="center-card">
+                    <!-- Page Heading -->
+                   <div class="header-center"> <h1 class="h3 mb-4 text-gray-800">Our Patients Bills!</h1>
+</div>
+                    <div class="row">
+
+                        <div class="col-lg-6">
+
+                            <!-- Circle Buttons -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    
+                                   
+                                    <!-- Circle Buttons (Default) -->
+    
 <body>
+  {% for x in bill %}
+  <h6 class="m-0 font-weight-bold text-primary">Bills Details:</h6>
+                                </div>
+                                <div class="card-body">
+<ul> <h3>
+<li> Bill ID: {{ x.bill_id }}</li>
+<li> Bill date: {{ x.bill_date }}</li>
+<li> Status: {{ x.bill_status }}</li>
+<li> Total: {{ x.total_pay }}</li>
+<li> Payment method: {{ x.payment_method }}</li>
+</ul> </h3>
 
-  
-
-      <h3>Status: {{ bill.bill_status }} </h3> 
-      <h3>Bill ID: {{ bill.bill_id }} </h3>
-      <h3>Bill date: {{ bill.bill_date }} </h3> 
-      <h3>Bill status: {{ bill.bill_status }} </h3> 
-      <h3>Total: {{ bill.total_pay }} </h3> 
-      <h3>Payment method: {{ bill.payment_method }} </h3>
-
-  
-  
-
+  {% endfor %}
 </body>
 </html>
