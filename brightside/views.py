@@ -137,3 +137,10 @@ def create_patient_user(request):
       return redirect("home")
     return render(request, "create_account_user.html", context=data)
 
+def bill_detail(request):
+    data = {}
+    data['bill'] = Bill.objects.all()
+
+    return render(request, 'bill.html', context=data)
+    
+

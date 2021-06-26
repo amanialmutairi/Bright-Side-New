@@ -17,7 +17,6 @@ urlpatterns = [
   path('user/bill/<int:id>/' , views.bill_view, name='user-bill'),
   path('create/patient/' , views.create_patient_admin, name='create-patient'),
   path('create/user/' , views.create_patient_user, name='create-patient-user'),
-
-
+  path('bill/detail/', views.bill_detail, name='bill-detail'),
 
 ]
