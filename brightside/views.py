@@ -110,15 +110,7 @@ def patient_list_view(request):
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
     return render(request, "searchbar.html", context = data)
 
-def bill_view(request):
-    data = {}
-    data['bill'] = Bill.objects.all()
-    #f = BillForm(request.POST or None, initial={'bill':patient.id})
-    #data['from'] = f
-    #if f.is_valid():
-     # f.save()
-    #return redirect('user-bill', id=id)
-    return render(request, "bill.html", context=data)
+
 
 def create_patient_admin(request):
     f = CreateUserForm(request.POST or None)
@@ -155,8 +147,10 @@ def paid_filter(request):
   data['paid'] = bill
   return render(request, "paid.html", context=data)
 
-
-def appointment_view(request,pid):
+def user_appointment_path(request):
+    data = {}
+    return render(request, "appointments.html", context=data)
+def user_appointment_view(request,pid):
     data = {}
     patient=Patient.objects.get(pk=pid)
     data['appiont'] =Appointment.objects.filter(patient=patient)

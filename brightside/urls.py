@@ -14,11 +14,11 @@ urlpatterns = [
   path('index/', views.index, name='index'),
   path('delete/appointment/<int:apt_id>/', views.delete_appointment),
   path('patient/detail', views.patient_list_view, name= 'patient-detail'),
-  path('user/bill/<int:id>/' , views.bill_view, name='user-bill'),
   path('create/patient/' , views.create_patient_admin, name='create-patient'),
   path('create/user/' , views.create_patient_user, name='create-patient-user'),
   path('bill/detail/', views.bill_detail, name='bill-detail'),
   path('unpaid_filter/', views.unpaid_filter, name='unpaid-filter'),
   path('paid_filter/', views.paid_filter, name='paid-filter'),
-  path('home/my_appointments/<int:pid>/',views.appointment_view, name='my_appointments'),
+  path('home/my_appointments/',views.user_appointment_path, name='user_appointments'),
+  path('home/my_appointments/<int:pid>/',views.user_appointment_view, name='my_appointments'),
 ]

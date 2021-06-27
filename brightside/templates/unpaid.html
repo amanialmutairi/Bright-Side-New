@@ -1,5 +1,28 @@
 {% load static %}
 <style>
+  button {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+button:hover {
+  background-color: #3a88fe;
+  box-shadow: 0px 15px 20px rgba(23, 100, 73, 0.2);
+  color: #fff;
+  transform: translateY(-1px);
+}
 ul {
   list-style-type: none;
 }
@@ -182,6 +205,8 @@ ul {
                                 
                             </div>
 {% endfor %}
+<a href="{% url 'bill-detail' %}">
+<button>Go Back</button></a>
 </div>
 
 </div>
