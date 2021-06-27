@@ -154,3 +154,11 @@ def paid_filter(request):
   bill = Bill.objects.filter(bill_status=0)
   data['paid'] = bill
   return render(request, "paid.html", context=data)
+
+
+def appointment_view(request,pid):
+    data = {}
+    patient=Patient.objects.get(pk=pid)
+    data['appiont'] =Appointment.objects.filter(patient=patient)
+  
+    return render(request, "appointments.html", context=data)

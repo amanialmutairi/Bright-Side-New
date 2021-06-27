@@ -142,6 +142,7 @@ input[type=submit]:hover {
                       <h4>{{user_profile.p_first_name}} {{user_profile.p_last_name}}</h4>
                       <p class="text-secondary mb-1">@{{user_profile.profile.username}}</p>
                       <p class="text-muted font-size-sm">{{user_profile.profile.email}}</p>
+                      <a class="btn btn-dark" href=" {% url 'my_appointments' user_profile.profile.id %} ">My Appointment </a>
                     </div>
                   </div>
                 </div>
@@ -160,8 +161,6 @@ input[type=submit]:hover {
                       {{ user_form.as_p }}
                      <input type="submit" value="Update user profile">
                     </form>
-
-                    
                
                     
                   </div>
