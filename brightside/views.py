@@ -29,7 +29,7 @@ def user_profile(request, profile_id):
 
     if f.is_valid():
         form = f.save(commit=True)
-        form.int = (form.p_username)
+        form.int = (form.p_first_name)
         form.save()
         return redirect('profile', profile_id=profile_id)
     return render(request, 'profile.html', context=data)

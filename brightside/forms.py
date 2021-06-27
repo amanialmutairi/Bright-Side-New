@@ -40,6 +40,8 @@ class PatientForm(ModelForm):
   class Meta:
     model = Patient
     fields = '__all__'
+    widgets = {
+      'profile' : forms.HiddenInput(), }
 
 #class BillForm(ModelForm):
  # class Meta:
