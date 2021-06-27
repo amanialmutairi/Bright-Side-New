@@ -17,30 +17,6 @@ ul {
   width: 1500px;
 
 }
-button {
-  
-  width: 140px;
-  height: 45px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
-button:hover {
-  background-color: #3a88fe;
-  box-shadow: 0px 15px 20px rgba(23, 100, 73, 0.2);
-  color: #fff;
-  transform: translateY(-1px);
-}
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,7 +150,7 @@ button:hover {
                     <!-- Page Heading -->
                     <div class="mymargin" >
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                       <div class="myh1"> <h1 class="h3 mb-0 text-gray-800">View All Bills</h1></div>
+                       <div class="myh1"> <h1 class="h3 mb-0 text-gray-800">View Paid Bills</h1></div>
                     </div>
 
                     <div class="row">
@@ -183,9 +159,29 @@ button:hover {
                     <div class="row">
 <div class="mysize" >
                         <div class="col-lg-6">
- <a href="{% url 'paid-filter' %}"><button>PAID</button></a> 
- <a href="{% url 'unpaid-filter' %}"><button>UNPAID</button></a> 
+{% for x in paid %}
+                            <!-- Default Card Example -->
+                            <div class="card mb-4">
+                              
+                                <div class="card-header">
+                                    Bill {{x.id}}
+                                </div>
+                              
+                                <div class="card-body" >
+<ul>                           
 
+<li>Bill date: {{ x.bill_date }}</li>
+<li>Status: {{ x.get_bill_status_display }}</li> 
+ <li>Total: {{ x.total_pay }}</li>
+<li> Payment method: {{ x.get_payment_method_display }}</li> 
+</ul>  
+
+
+
+                                </div>
+                                
+                            </div>
+{% endfor %}
 </div>
 
 </div>

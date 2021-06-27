@@ -143,4 +143,14 @@ def bill_detail(request):
 
     return render(request, 'bill.html', context=data)
     
+def unpaid_filter(request):
+  data={}
+  bill = Bill.objects.filter(bill_status=1)
+  data['unpaid'] = bill
+  return render(request, "unpaid.html", context=data)
 
+def paid_filter(request):
+  data={}
+  bill = Bill.objects.filter(bill_status=0)
+  data['paid'] = bill
+  return render(request, "paid.html", context=data)
