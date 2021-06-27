@@ -1,5 +1,9 @@
 {% load static %}
 <style>
+.amymargin {
+  
+  margin: 50px;
+}
 ul {
   list-style-type: none;
 }
@@ -7,7 +11,8 @@ ul {
   
   margin: auto;
   width: 80%;
-  padding: 10px;
+  padding: 80px 10px 0px;
+  
   text-align: center;
 }
 .myh1{
@@ -18,7 +23,6 @@ ul {
 
 }
 button {
-  
   width: 140px;
   height: 45px;
   font-family: 'Roboto', sans-serif;
@@ -183,8 +187,8 @@ button:hover {
                     <div class="row">
 <div class="mysize" >
                         <div class="col-lg-6">
- <a href="{% url 'paid-filter' %}"><button>PAID</button></a> 
- <a href="{% url 'unpaid-filter' %}"><button>UNPAID</button></a> 
+ <a class='amymargin' href="{% url 'paid-filter' %}"><button>PAID</button></a> 
+ <a class='amymargin' href="{% url 'unpaid-filter' %}"><button>UNPAID</button></a> 
 
 </div>
 
@@ -241,3 +245,4 @@ button:hover {
 </body>
 
 </html>
+

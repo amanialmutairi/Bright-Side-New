@@ -1,5 +1,9 @@
 {% load static %}
+
 <style>
+ul {
+  list-style-type: none;
+}
 .mymargin{
   
   margin: auto;
@@ -156,6 +160,7 @@
                     <div class="row">
 <div class="mysize" >
                         <div class="col-lg-6">
+                         <ul>
 {% for x in all_appointments %}
                             <!-- Default Card Example -->
                             <div class="card mb-4">
@@ -165,12 +170,18 @@
                                 </div>
                                 
                                 <div class="card-body">
-                                 <strong>Patient:</strong> {{x.patient}}
-                                  <strong>Date:</strong> {{x.appointment_date}}
-                                   <strong>Time:</strong> {{x.appointment_time}}
-                                   <strong>Service:</strong> {{x.service}}
-                                  <strong>Price:</strong>  {{x.service.service_price}}KD
-                                   <strong>Physician:</strong> {{x.physician}}
+
+                                <li> <strong>Patient:</strong> {{x.patient}}</li>
+
+                                  <li><strong>Date:</strong> {{x.appointment_date}}</li>
+                                  
+                                  <li><strong>Time:</strong> {{x.appointment_time}}</li>
+                                  
+                                   <li><strong>Service:</strong> {{x.service}}</li>
+                                   
+                                  <li><strong>Price:</strong>  {{x.service.service_price}}KD</li>
+                                  
+                                   <li><strong>Physician:</strong> {{x.physician}}</li>
 
 
 
@@ -178,6 +189,7 @@
                                 
                             </div>
 {% endfor %}
+</ul>
 </div>
 
 </div>
