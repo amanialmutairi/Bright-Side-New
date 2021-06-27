@@ -206,7 +206,7 @@ input[type=submit]:hover {
 </form>
     <table class="styled-table">
       {% for x in patient %}
-      <td align="center" colspan="4"><h2>{{ x }}</h2></td>
+      <td align="center" colspan="5"><h2>{{ x }}</h2></td>
       {% endfor %}
     </tr>
     
@@ -215,6 +215,8 @@ input[type=submit]:hover {
       <td align="center">Time</td>
       <td align="center">Service</td>
       <td align="center">Price</td>
+      <td align="center">Physician</td>
+
     </tr>
 
     {% for x in patient_list %}
@@ -222,7 +224,9 @@ input[type=submit]:hover {
        <td align="center"> {{x.appointment_date}}</td>
       <td align="center">{{x.appointment_time}}</td>
       <td align="center">{{x.service}}</td>
-      <td align="center"> {{x.service.service_price}}$</td>
+      <td align="center"> {{x.service.service_price}}KD</td>
+      <td align="center"> Dr.{{x.physician}}</td>
+
     </tr>
     {% endfor %}
   </table>
