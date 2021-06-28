@@ -43,7 +43,7 @@ class Service(models.Model):
 
 #class patient(models.Model):
 class Patient(models.Model):
-    patient = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile = models.OneToOneField(User, on_delete=models.CASCADE)
     p_first_name = models.CharField(max_length=50)
     p_last_name =  models.CharField(max_length=50)
 
