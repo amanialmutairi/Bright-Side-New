@@ -20,4 +20,5 @@ urlpatterns = [
   path('unpaid_filter/', views.unpaid_filter, name='unpaid-filter'),
   path('paid_filter/', views.paid_filter, name='paid-filter'),
   path('home/my_appointments/<int:pid>/',views.user_appointment_view, name='my_appointments'),
+
 ]

@@ -43,13 +43,10 @@ class Service(models.Model):
 
 #class patient(models.Model):
 class Patient(models.Model):
-    profile = AutoOneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
-    #p_username = models.CharField(max_length=50, unique=True)
+    patient = models.OneToOneField(User, on_delete=models.CASCADE)
     p_first_name = models.CharField(max_length=50)
     p_last_name =  models.CharField(max_length=50)
-    #p_email = models.EmailField(max_length= 100, unique=True)
-    #p_password = models.CharField(max_length=100)
-    #id = models.AutoField(primary_key=True)
+
 
     def __str__(self):
         return self.p_first_name

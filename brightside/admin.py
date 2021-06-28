@@ -3,7 +3,7 @@ from .models import Patient, Reseptionist, Service, Bill, Appointment, Physician
 # Register your models here.
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-    list_display = ['profile', 'p_first_name', 'p_last_name', ]
+    list_display = ['patient', 'p_first_name', 'p_last_name', ]
 
 @admin.register(Physician)
 class PhysicianAdmin(admin.ModelAdmin):

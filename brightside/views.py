@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from datetime import date
 from django.db.models import Sum, Count, F
+from django.db.models.functions import TruncMonth
 from .plots import line_plot, pie_plot, bar_plot
 from django.contrib.auth.decorators import login_required
 
@@ -71,7 +72,8 @@ def index(request):
     patients = Patient.objects.all().count()
     calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
 
-    prices = Appointment.objects.all().order_by("appointment_date")
+    prices = Appointment.objects.all().order_by('appointment_date')
+    
     revenue = [x.service.service_price for x in prices]
     days = [x.appointment_date for x in prices ]
 
