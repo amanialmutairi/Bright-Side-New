@@ -18,6 +18,7 @@ def get_graph():
 # create a plot function for different matplotlib plots
 def line_plot(x, y):
   plt.figure(figsize=(4,4)) # you can set size
+  plt.xticks(rotation=15)
   plt.plot(x,y)
   return get_graph()
 
