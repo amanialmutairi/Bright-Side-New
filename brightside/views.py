@@ -73,7 +73,6 @@ def index(request):
     calc_earning = Appointment.objects.all().aggregate(total_earn= Sum('service__service_price'))
 
     prices = Appointment.objects.all().order_by('appointment_date')
-    
     revenue = [x.service.service_price for x in prices]
     days = [x.appointment_date for x in prices ]
 
