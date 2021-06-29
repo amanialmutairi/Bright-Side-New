@@ -14,19 +14,19 @@ class Reseptionist(models.Model):
 #class physician(models.Model):
 class Physician(models.Model):
   Speciality = (
-        (0, "General Dentist"),
-        (1, "Periodontist"),
-        (2, "Oral and Maxillofacial Surgeon"),
-        (3, "Nurse"),
+        (0, 'General Dentist'),
+        (1, 'Periodontist'),
+        (2, 'Oral and Maxillofacial Surgeon'),
+        (3, 'Nurse'),
 
     )
-  ph_id = models.CharField(max_length=15, unique=True)
-  ph_first_name = models.CharField(max_length=50)
-  ph_last_name =  models.CharField(max_length=50)
-  ph_speciality =  models.IntegerField(choices=Speciality, default=0)
+  ph_id = models.CharField(max_length=15, unique=True, verbose_name='ID')
+  ph_first_name = models.CharField(max_length=50, verbose_name='First name')
+  ph_last_name =  models.CharField(max_length=50, verbose_name='Last name')
+  ph_speciality =  models.IntegerField(choices=Speciality, default=0, verbose_name='Speciality')
 
   def __str__(self):
-    return f"{self.ph_first_name}  {self.ph_last_name} "
+    return f'{self.ph_first_name}  {self.ph_last_name} '
 
 class Ph_service(models.Model):
   physician = models.ForeignKey('Physician', on_delete=models.CASCADE)
@@ -44,8 +44,8 @@ class Service(models.Model):
 #class patient(models.Model):
 class Patient(models.Model):
     profile = models.OneToOneField(User, on_delete=models.CASCADE)
-    p_first_name = models.CharField(max_length=50)
-    p_last_name =  models.CharField(max_length=50)
+    p_first_name = models.CharField(max_length=50, verbose_name='First name')
+    p_last_name =  models.CharField(max_length=50, verbose_name='Last name')
 
 
     def __str__(self):
@@ -64,14 +64,14 @@ class Appointment(models.Model):
   #class bill(models.Model):
 class Bill(models.Model):
   payment_method = (
-        (0, "VISA"),
-        (1, "Master Card"),
-        (2, "Cash"),
-        (3, "Knet")
+        (0, 'VISA'),
+        (1, 'Master Card'),
+        (2, 'Cash'),
+        (3, 'Knet')
     )
   STATUS = (
-        (0, "Paid"),
-        (1, "Unpaid"),
+        (0, 'Paid'),
+        (1, 'Unpaid'),
     )
   bill_id = models.CharField(max_length=15, unique=True)
   bill_date = models.DateTimeField(null=True)
