@@ -3,7 +3,7 @@
 
 ## Introduction 
 
-A dental clinic booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, service & the physician they want. Also, patients can view their bills through their profile and check each bill status. Furthermore, each patient can update their own profile. The reception employee can add, delete & change any appointment booked by patients. They can also view each patient booking details and how many appointment they have. Receptionist can create a patient account too. in receptionist dashboard they can view statistic details such as total earning, appointments per day and total patient registered. In dashboard there is a calendar view where receptionist can view all the appointments organized per day and hour.
+A dental clinic booking management system which can be accessible by both reception employees and patients. The patients can book their own appointments by choosing the date, time, service & the physician they want. Also, patients can create an account & view their appointments through their profile and check each appointment details. Furthermore, each patient can update their own profile. The reception employee can add & delete any appointment booked by patients. They can also view each patient booking details and how many appointments they have. Receptionist can create a patient account too. in receptionist dashboard they can view statistic details such as total earning, appointments per day, total appointments and total patient registered. In dashboard view section there is appointments view where receptionist can view all the appointments organized from the day the system was accessed and future appointments (past appointments won't be viewed).
 
 ## Requirememts 
 
@@ -48,7 +48,7 @@ Yousif Alfailakawi - 2162117711
 Amani Almutairi - 2152113593
 
 ## Bonuses:
--  chart in views.py line 40.
--  calculate today appointments only in views.py line 40.
+-  chart in views.py line 75.
+-  calculate today appointments only in views.py line 71.
 -  used allauth package.
  
