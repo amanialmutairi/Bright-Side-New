@@ -36,9 +36,9 @@ def user_profile(request, profile_id):
 
 
 # User-view // user's appointments
-def user_appointment_view(request,pid):
+def user_appointment_view(request,profile_id):
     data = {}
-    patient=Patient.objects.get(pk=pid)
+    patient=Patient.objects.get(profile_id=profile_id)
     data['appiont'] =Appointment.objects.filter(patient=patient)
   
     return render(request, 'user_appointments.html', context=data)

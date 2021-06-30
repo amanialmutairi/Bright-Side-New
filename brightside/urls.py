@@ -19,6 +19,6 @@ urlpatterns = [
   path('bill/detail/', views.bill_detail, name='bill-detail'),
   path('unpaid_filter/', views.unpaid_filter, name='unpaid-filter'),
   path('paid_filter/', views.paid_filter, name='paid-filter'),
-  path('home/my_appointments/<int:pid>/',views.user_appointment_view, name='my_appointments'),
+  path('home/my_appointments/<int:profile_id>/',views.user_appointment_view, name='my_appointments'),
 
 ]
