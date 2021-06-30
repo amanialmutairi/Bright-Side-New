@@ -48,7 +48,7 @@ Yousif Alfailakawi - 2162117711
 Amani Almutairi - 2152113593
 
 ## Bonuses:
--  chart in views.py line 75.
--  calculate today appointments only in views.py line 71.
--  used allauth package.
+-  chart in views.py line 75. (OK, 10 pts)
+-  calculate today appointments only in views.py line 71. (Date querey, not new)
+-  used allauth package. (Not implemented)
  
