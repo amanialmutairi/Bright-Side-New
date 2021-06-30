@@ -35,7 +35,7 @@ def user_profile(request, profile_id):
     return render(request, 'profile.html', context=data)
 
 
-# User-view // user's appointments 
+# User-view // user's appointments
 def user_appointment_view(request,pid):
     data = {}
     patient=Patient.objects.get(pk=pid)
@@ -97,6 +97,7 @@ def delete_appointment(request, apt_id):
   m = f'Do you want to delete {delete_apt.patient} appointment on {delete_apt.appointment_date} time: {delete_apt.appointment_time} with Dr.{delete_apt.physician}?'
   
   data={}
+  
   data['message'] = m
   if "confirm" in request.GET:
     delete_apt.delete()
@@ -105,7 +106,7 @@ def delete_appointment(request, apt_id):
     return redirect('manage')
   return render(request, 'manage_apt.html', context=data)
 
-# Admin-view all appointments  
+# Admin-view all appointments
 def view_all_apt(request):
   data = {}
   data['all_appointments'] = Appointment.objects.filter(appointment_date__gt=datetime.now()).order_by('appointment_date')
@@ -123,11 +124,11 @@ def booking_admin(request):
 
 
 # Admin-view user details
-def patient_list_view(request):
+def patient_details_view(request):
     data = {}
     data['patient'] = Patient.objects.filter(id=request.GET.get('search'))
     data['patient_list'] = Appointment.objects.filter(patient=request.GET.get('search'))
-    return render(request, 'searchbar.html', context = data)
+    return render(request, 'patient_details.html', context = data)
 
 
 # Admin-view create patient account
@@ -148,7 +149,7 @@ def bill_detail(request):
     return render(request, 'bill.html', context=data)
 
 
-# Admin-view unpaid bills   
+# Admin-view unpaid bills
 def unpaid_filter(request):
   data={}
   bill = Bill.objects.filter(bill_status=1)
